@@ -1,0 +1,59 @@
+name: Build All
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+    - name: arm-none-eabi-gcc
+      uses: fiam/arm-none-eabi-gcc@v1
+      with:
+        release: '9-2019-q4'
+    - name: Build Libraries
+      run: ./ci/build_libs.sh
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Build Examples
+      run: python ./ci/build_examples.py
+    - name: Create Distributable Binaries
+      run: python ./ci/build_dist.py -ru
+    - name: Deploy Dist
+      uses: EndBug/add-and-commit@v4
+      with:
+        message: 'Automated: Committing Dist folder' 
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  converttopdf:
+    name: Markdown to PDF and HTML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Copy temp readme
+        run: ./ci/copy_readme.sh
+      - uses: BaileyJM02/markdown-to-pdf@v1
+        with:
+          input_dir: temp_docs
+          output_dir: doc
+          # images_dir: resources
+      - uses: actions/upload-artifact@v1
+        with:
+          name: temp_docs
+          path: doc
+      - name: Remove temp readme
+        run: ./ci/rm_readme.sh
+      - name: Deploy Dist
+        uses: EndBug/add-and-commit@v4
+        with:
+          message: 'Automated: Committing doc folder' 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
