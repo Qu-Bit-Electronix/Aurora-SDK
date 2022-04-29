@@ -1,3 +1,4 @@
+/** Aurora Hardware Support File */
 #pragma once
 #ifndef AURORA_HW_H
 #define AURORA_HW_H
@@ -72,8 +73,8 @@ namespace aurora
 
         enum Leds
         {
-            LED_TIME,
-            LED_FREQ,
+            LED_REVERSE,
+            LED_FREEZE,
             LED_ILLUM_1,
             LED_ILLUM_2,
             LED_ILLUM_4,
