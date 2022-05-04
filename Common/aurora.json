@@ -1,0 +1,195 @@
+
+{   
+    "name": "Aurora",
+    "som": "seed",
+    "audio": {
+        "channels": 2
+    },
+    "app_type": "BOOT_SRAM",
+    "parents": {
+        "i2c": {
+            "component": "i2c",
+            "pin": {
+              "scl": 11,
+              "sda": 12
+            }
+          },
+        "led_driver": {
+            "component": "PCA9685",
+            "driver_count": 2,
+            "address": "{0x00, 0x01}",
+            "parent": "i2c"
+        }
+    },
+    "components": {
+        "sw_freeze": {
+            "component": "Switch",
+            "pin": 1
+        },
+        "sw_reverse": {
+            "component": "Switch",
+            "pin": 10
+        },
+        "sw_shift": {
+            "component": "Switch",
+            "pin": 13
+        },
+        "gate_freeze": {
+            "component": "GateIn",
+            "pin": 26,
+            "invert": "false"
+        },
+        "gate_reverse": {
+            "component": "GateIn",
+            "pin": 14,
+            "invert": "false"
+        },
+        "cv_atmosphere": {
+            "component": "AnalogControlBipolar",
+            "pin": 17
+        },
+        "cv_time": {
+            "component": "AnalogControlBipolar",
+            "pin": 18
+        },
+        "cv_mix": {
+            "component": "AnalogControlBipolar",
+            "pin": 19
+        },
+        "cv_reflect": {
+            "component": "AnalogControlBipolar",
+            "pin": 20
+        },
+        "cv_blur": {
+            "component": "AnalogControlBipolar",
+            "pin": 21
+        },
+        "cv_warp": {
+            "component": "AnalogControlBipolar",
+            "pin": 22
+        },
+        "ctrl_time": {
+            "component": "AnalogControl",
+            "pin": 15
+        },
+        "ctrl_reflect": {
+            "component": "AnalogControl",
+            "pin": 16
+        },
+        "ctrl_mix": {
+            "component": "AnalogControl",
+            "pin": 23
+        },
+        "ctrl_atmosphere": {
+            "component": "AnalogControl",
+            "pin": 25
+        },
+        "ctrl_blur": {
+            "component": "AnalogControl",
+            "pin": 28
+        },
+        "ctrl_warp": {
+            "component": "AnalogControl",
+            "pin": 24
+        },
+        "led_time": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": 0,
+                "green": 1,
+                "blue": 2
+            },
+            "parent": "led_driver"
+        },
+        "led_freq": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": 3,
+                "green": 4,
+                "blue": 5
+            },
+            "parent": "led_driver"
+        },
+        "led_illum_1": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": 6,
+                "green": 7,
+                "blue": 8
+            },
+            "parent": "led_driver"
+        },
+        "led_illum_2": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": 9,
+                "green": 10,
+                "blue": 11
+            },
+            "parent": "led_driver"
+        },
+        "led_illum_3": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": 12,
+                "green": 13,
+                "blue": 14
+            },
+            "parent": "led_driver"
+        },
+        "led_illum_4": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": 16,
+                "green": 17,
+                "blue": 18
+            },
+            "parent": "led_driver"
+        },
+        "led_illum_6": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": 22,
+                "green": 23,
+                "blue": 24
+            },
+            "parent": "led_driver"
+        },
+        "led_illum_8": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": 28,
+                "green": 29,
+                "blue": 30
+            },
+            "parent": "led_driver"
+        },
+        "led_bot_1": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": -1,
+                "green": 20,
+                "blue": 21
+            },
+            "parent": "led_driver"
+        },
+        "led_bot_2": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": -1,
+                "green": 26,
+                "blue": 27
+            },
+            "parent": "led_driver"
+        },
+        "led_bot_3": {
+            "component": "PCA9685RgbLed",
+            "index": {
+                "red": -1,
+                "green": 19,
+                "blue": 25
+            },
+            "parent": "led_driver"
+        }
+    }
+}
