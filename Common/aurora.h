@@ -471,6 +471,14 @@ class Hardware
             audio_cfg.postgain = 1.0f;
             seed.audio_handle.Init(audio_cfg, sai_2_handle);
         }
+        else
+        {
+            /** Set 44.1kHz Deemp Filter pin on Daisy Seed2 DFM to off */
+            daisy::GPIO deemp;
+            daisy::Pin  deemp_pin(daisy::PORTB, 11);
+            deemp.Init(deemp_pin, daisy::GPIO::Mode::OUTPUT);
+            deemp.Write(0);
+        }
     }
 
     // pots,switches, gates, CV
