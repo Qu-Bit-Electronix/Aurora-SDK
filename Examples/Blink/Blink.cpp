@@ -34,7 +34,7 @@ int main(void)
 			led_state = true;
 
 		/** Write all LED states to the hardware */
-		hw.UpdateDriverLeds();
+		hw.WriteLeds();
 
 		/** Delay 500ms */
 		System::Delay(500);

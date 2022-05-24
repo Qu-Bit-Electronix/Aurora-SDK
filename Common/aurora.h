@@ -239,7 +239,7 @@ class Hardware
         }
     }
 
-    void UpdateDriverLeds() { led_driver_.SwapBuffersAndTransmit(); }
+    void WriteLeds() { led_driver_.SwapBuffersAndTransmit(); }
 
     void SetLed(Leds idx, float r, float g, float b)
     {
@@ -572,7 +572,7 @@ class Hardware
         led_driver_.Init(i2c, {0x00, 0x01}, led_dma_buffer_a, led_dma_buffer_b);
 
         ClearLeds();
-        UpdateDriverLeds();
+        WriteLeds();
     }
 
     HardwareVersion GetBoardRevision()
