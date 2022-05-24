@@ -13,6 +13,10 @@
 
 namespace aurora
 {
+
+/** @brief const used internally within Aurora Firmware to manage buffer memory 
+ *  This can be safely exceeded in custom firmware.
+ */
 static constexpr int kMaxBlockSize = 96;
 
 /** @brief Global buffers for the LED driver
@@ -22,43 +26,33 @@ static daisy::LedDriverPca9685<2, true>::DmaBuffer DMA_BUFFER_MEM_SECTION
     led_dma_buffer_a,
     led_dma_buffer_b;
 
-/** These are left global so that they will be in the AXI sram regardless
- *  of the memory section used for the primary Hardware class.
+/** @brief global USB host handle accessor 
+ *  This is left global so that it is guaranteed to be within the AXI SRAM
+ *  with the aurora_sram.lds linker file.
  */
-daisy::USBHostHandle  usb;
+daisy::USBHostHandle usb;
+
+/** @brief global accessor to the FatFS interface. 
+ *  This is left global so that it is guaranteed to be within the AXI SRAM
+ *  with the aurora_sram.lds linker file.
+ */
 daisy::FatFSInterface fatfs_interface;
 
-/** @brief Hardware support class for the Qu-Bit Aurora */
+/** @brief Hardware support class for the Qu-Bit Aurora 
+ *  This should be created, and intitialized at the beginning of any program
+ *  before running anything else.
+ * 
+ *  If you've used the Daisy Seed, etc. before this object takes the place
+ *  of the core "DaisySeed" or other board support objects.
+*/
 class Hardware
 {
   public:
-    enum Controls_CV
-    {
-        CV_ATMOSPHERE,
-        CV_TIME,
-        CV_MIX,
-        CV_REFLECT,
-        CV_BLUR,
-        CV_WARP,
-        CV_LAST,
-    };
-
-    enum Switches
-    {
-        SW_FREEZE,
-        SW_REVERSE,
-        SW_SHIFT,
-        SW_LAST,
-    };
-
-    enum Gates
-    {
-        GATE_FREEZE,
-        GATE_REVERSE,
-        GATE_LAST,
-    };
-
-    enum Controls
+    /** @brief indexed accessors for knob controls 
+     *  Example usage:
+     *  float val = hw.GetKnobValue(KNOB_TIME);
+     */
+    enum ControlKnobs
     {
         KNOB_TIME,
         KNOB_REFLECT,
@@ -69,6 +63,49 @@ class Hardware
         KNOB_LAST,
     };
 
+    /** @brief indexed accessors for CV controls 
+     *  Example usage:
+     *  float val = hw.GetCvValue(CV_ATMOSPHERE);
+     */
+    enum ControlCVs
+    {
+        CV_ATMOSPHERE,
+        CV_TIME,
+        CV_MIX,
+        CV_REFLECT,
+        CV_BLUR,
+        CV_WARP,
+        CV_LAST,
+    };
+
+    /** @brief indexed accessors for momentary switches 
+     *  Example usage:
+     *  bool state = hw.GetSwitch(SW_FREEZE).Pressed();
+     */
+    enum Switches
+    {
+        SW_FREEZE,
+        SW_REVERSE,
+        SW_SHIFT,
+        SW_LAST,
+    };
+
+    /** @brief indexed accessors for momentary switches 
+     *  Example usage:
+     *  bool trig = hw.GetGateTrig(GATE_FREEZE);
+     */
+    enum Gates
+    {
+        GATE_FREEZE,
+        GATE_REVERSE,
+        GATE_LAST,
+    };
+
+
+    /** @brief indexed accessors for RGB LEDs 
+     *  Example usage:
+     *  hw.SetLed(LED_FREEZE, 0.f, 0.f, 1.f);
+     */
     enum Leds
     {
         LED_REVERSE,
@@ -85,10 +122,24 @@ class Hardware
         LED_LAST,
     };
 
+    /** @brief Empty Constructor 
+     *  Call `Init` from main to initialize
+    */
     Hardware() {}
+
+    /** @brief Empty Destructor
+     *  This object should span the life of the program
+     */
     ~Hardware() {}
 
-    void Init(bool boost = false)
+    /** @brief Initialize the hardware. 
+     *  Call this function at the start of main()
+     * 
+     *  @param boost true sets the processor to run at the maximum 480MHz, 
+     *               false sets the processor to run at 400MHz.
+     *               Defaults to true (480MHz).
+     */
+    void Init(bool boost = true)
     {
         seed.Init(boost);
         hw_version = GetBoardRevision();
@@ -106,16 +157,21 @@ class Hardware
         }
     }
 
+    /** @brief delay function; same as System::Delay(), and should not be called 
+     *         from any interrupt callbacks (LowPriorityCallback/AudioCallback).
+     * 
+     *  @param del number of milliseconds to delay
+    */
     void DelayMs(size_t del) { seed.DelayMs(del); }
 
     /** This starts up a callback that is on the lowest priority interrupt level
-         *  This provides an area for non-background tasks that should interrupt low
-         *  level activity like diskio.
-         *
-         *  @param cb callback to take place at target frequency
-         *  @param target_freq freq in hz that the callback should take place.
-         *  @param data any data to send through callback; this defaults to nullptr
-         */
+     *  This provides an area for non-background tasks that should interrupt low
+     *  level activity like diskio.
+     *
+     *  @param cb callback to take place at target frequency
+     *  @param target_freq freq in hz that the callback should take place.
+     *  @param data any data to send through callback; this defaults to nullptr
+     */
     void StartLowPriorityCallback(daisy::TimerHandle::PeriodElapsedCallback cb,
                                   uint32_t target_freq,
                                   void    *data = nullptr)
@@ -134,22 +190,42 @@ class Hardware
         tim5_handle.Start();
     }
 
+    /** @brief Starts a specified Interleaving audio callback */
     void StartAudio(daisy::AudioHandle::InterleavingAudioCallback cb)
     {
         seed.StartAudio(cb);
     }
 
+    /** @brief Starts a specified audio callback 
+     *         Data is non-interleaved 
+     *         (i.e. {{L0, L1, ... , LN},{R0, R1, ... , RN}})
+     */
     void StartAudio(daisy::AudioHandle::AudioCallback cb)
     {
         current_cb_ = cb;
         seed.StartAudio(cb);
     }
 
+    /** @brief Changes current callback to a new interleaved callback */
     void ChangeAudioCallback(daisy::AudioHandle::InterleavingAudioCallback cb)
     {
         seed.ChangeAudioCallback(cb);
     }
 
+
+    /** @brief Changes current callback to a new non-interleaved callback */
+    void ChangeAudioCallback(daisy::AudioHandle::AudioCallback cb)
+    {
+        current_cb_ = cb;
+        seed.ChangeAudioCallback(cb);
+    }
+
+    /** @brief Updates the samplerate to one of the allowed target samplerates.
+     *         This function requires audio to be stopped to work.
+     * 
+     *  @param sr target samplerate in Hz. Allowed values are 16000, 32000, 48000, 96000
+     *            any other value will fallback to 48kHz
+     */
     void ChangeSampleRate(int sr)
     {
         daisy::SaiHandle::Config::SampleRate srval;
@@ -179,11 +255,6 @@ class Hardware
         seed.StartAudio(current_cb_);
     }
 
-    void ChangeAudioCallback(daisy::AudioHandle::AudioCallback cb)
-    {
-        current_cb_ = cb;
-        seed.ChangeAudioCallback(cb);
-    }
 
     void StopAudio() { seed.StopAudio(); }
 
@@ -250,12 +321,66 @@ class Hardware
         led_driver_.SetLed(led.b, b);
     }
 
+    /** @brief filters and debounces all control 
+     *  This should be run once per audio callback.
+     */
     void ProcessAllControls()
     {
         ProcessAnalogControls();
         ProcessDigitalControls();
     }
 
+    /** @brief filters and debounces digital controls (switches)
+     *  This is called from ProcessAllControls, and should be run once per audio callback
+     */
+    void ProcessDigitalControls()
+    {
+        for(int i = 0; i < SW_LAST; i++)
+        {
+            switches[i].Debounce();
+        }
+    }
+
+    /** @brief filters all analog controls (knobs and CVs)
+     *  This is called from ProcessAllControls, and should be run once per audio callback
+     */
+    void ProcessAnalogControls()
+    {
+        for(int i = 0; i < KNOB_LAST; i++)
+        {
+            controls[i].Process();
+        }
+
+        for(int i = 0; i < CV_LAST; i++)
+        {
+            cv[i].Process();
+        }
+    }
+    /** @brief returns a 0-1 value for the given knob control
+     *  @param ctrl knob index to read from. Should be one of ControlKnob (i.e. KNOB_TIME)
+     */
+    inline float GetKnobValue(int ctrl) const { return controls[ctrl].Value(); }
+
+    /** @brief returns a reference to a given momentary switch 
+     *         Example Usage:
+     *         bool state = hw.GetButton(Hardware::SW_FREEZE).Pressed();
+     *  @param idx one of the Switches enum values
+     */
+    inline const daisy::Switch &GetButton(int idx) const { return switches[idx]; }
+
+    /** @brief returns true if the gate input just went high 
+     *  This is expected to be checked only once per audio callback
+     * 
+     *  @param idx one of the Gates enum values
+     */
+    inline bool GetGateTrig(int idx) { return gates[idx].Trig(); }
+
+    /** @brief returns true if the gate input is currently high 
+     *  @param idx one of the Gates enum values
+     */
+    inline bool GetGateState(int idx) { return gates[idx].State(); }
+
+    /** @brief Update HidRates for new Callback rate when samplerate/blocksize change */
     void UpdateHidRates()
     {
         for(int i = 0; i < CV_LAST; i++)
@@ -272,30 +397,7 @@ class Hardware
         }
     }
 
-    void ProcessDigitalControls()
-    {
-        for(int i = 0; i < SW_LAST; i++)
-        {
-            switches[i].Debounce();
-        }
-    }
-
-    void ProcessAnalogControls()
-    {
-        for(int i = 0; i < KNOB_LAST; i++)
-        {
-            controls[i].Process();
-        }
-
-        for(int i = 0; i < CV_LAST; i++)
-        {
-            cv[i].Process();
-        }
-    }
-
-    inline float GetKnobValue(int ctrl) const { return controls[ctrl].Value(); }
-
-    /** @brief mounts USB Drive for use if it is present */
+    /** @brief starts the mounting process for USB Drive use if it is present */
     void PrepareMedia(
         daisy::USBHostHandle::ConnectCallback     connect_cb      = nullptr,
         daisy::USBHostHandle::DisconnectCallback  disconnect_cb   = nullptr,
@@ -321,17 +423,20 @@ class Hardware
                 0);
     }
 
+    /** @brief Return a MIDI note number value from -60 to 60 corresponding to 
+     *      the -5V to 5V input range of the Warp CV input.
+     */
     inline float GetWarpVoct()
     {
         return voct_cal.ProcessInput(cv[CV_WARP].Value());
     }
 
     /** @brief  gets calibrated offset-adjusted CV Value from the hardware.
-         *  @param  cv_idx index of the CV to read from.
-         *  @return offset adjusted output (except for warp which is v/oct calibrated)
-         *  @note   when returning warp CV from this function it will be with no calibrated
-         *    offset, and is identical to reading from the AnalogControl itself.
-         */
+     *  @param  cv_idx index of the CV to read from.
+     *  @return offset adjusted output (except for warp which is v/oct calibrated)
+     *  @note   when returning warp CV from this function it will be with no calibrated
+     *    offset, and is identical to reading from the AnalogControl itself.
+     */
     inline float GetCvValue(int cv_idx)
     {
         if(cv_idx != CV_WARP)
