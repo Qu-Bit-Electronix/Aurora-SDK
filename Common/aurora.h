@@ -221,7 +221,7 @@ class Hardware
     }
 
     /** @brief Updates the samplerate to one of the allowed target samplerates.
-     *         This function requires audio to be stopped to work.
+     *         This function stops the audio completely, and will cause clicks.
      * 
      *  @param sr target samplerate in Hz. Allowed values are 16000, 32000, 48000, 96000
      *            any other value will fallback to 48kHz
@@ -255,14 +255,21 @@ class Hardware
         seed.StartAudio(current_cb_);
     }
 
-
+    /** @brief Stops Audio */
     void StopAudio() { seed.StopAudio(); }
 
+    /** @brief sets the audio sample rate. Audio must be stopped for this to work properly 
+     *  @param samplerate target samplerate in in daisy::SaiHandle::Config::SampleRate 
+     */
     void SetAudioSampleRate(daisy::SaiHandle::Config::SampleRate samplerate)
     {
         seed.SetAudioSampleRate(samplerate);
     }
 
+    /** @brief sets the audio sample rate. Audio must be stopped for this to work properly 
+     *  @param samplerate target samplerate in Hz. Allowed values are 16000, 32000, 48000, 96000
+     *            any other value will fallback to 48kHz
+     */
     void SetAudioSampleRate(int samplerate)
     {
         daisy::SaiHandle::Config::SampleRate srval;
@@ -287,21 +294,29 @@ class Hardware
         seed.SetAudioSampleRate(srval);
     }
 
+    /** @brief returns the sample rate in Hz of the audio engine */
     float AudioSampleRate() { return seed.audio_handle.GetSampleRate(); }
 
+    /** @brief sets the number of samples to process in each audio callback */
     void SetAudioBlockSize(size_t blocksize)
     {
         seed.SetAudioBlockSize(blocksize);
     }
 
+    /** @brief returns the number of samples to process in each audio callback */
     size_t AudioBlockSize() { return seed.AudioBlockSize(); }
 
+    /** @brief returns the rate in Hz that the audio callback gets called */
     float AudioCallbackRate() const { return seed.AudioCallbackRate(); }
 
+    /** @brief sets the state of the LED on the daisy itself */
     void SetTestLed(bool state) { seed.SetLed(state); }
 
-    void SetTestPoint(bool state) { seed.SetTestPoint(state); }
-
+    /** @brief sets all RGB LEDs to off state 
+     *  This can be called from the top of wherever LEDs are periodically set
+     *  or within the UI framework's Canvas descriptor via the 
+     *  clearFunction_ function.
+     */
     void ClearLeds()
     {
         for(int i = 0; i < LED_LAST; i++)
@@ -310,8 +325,19 @@ class Hardware
         }
     }
 
+    /** @brief Writes the state of all LEDs to the hardware 
+     *  This can be called from a fixed interval in the main loop,
+     *  or within the UI framework's Canvas descriptor via the 
+     *  flushFunction_ function.
+     */
     void WriteLeds() { led_driver_.SwapBuffersAndTransmit(); }
 
+    /** @brief Sets the RGB value of a given LED 
+     *  @param idx LED index (one of Leds enum above)
+     *  @param r 0- 1 red value 
+     *  @param g 0- 1 green value 
+     *  @param b 0- 1 blue value 
+    */
     void SetLed(Leds idx, float r, float g, float b)
     {
         LedIdx led = LedMap[idx];
@@ -366,7 +392,10 @@ class Hardware
      *         bool state = hw.GetButton(Hardware::SW_FREEZE).Pressed();
      *  @param idx one of the Switches enum values
      */
-    inline const daisy::Switch &GetButton(int idx) const { return switches[idx]; }
+    inline const daisy::Switch &GetButton(int idx) const
+    {
+        return switches[idx];
+    }
 
     /** @brief returns true if the gate input just went high 
      *  This is expected to be checked only once per audio callback
