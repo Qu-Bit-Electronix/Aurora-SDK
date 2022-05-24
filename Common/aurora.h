@@ -16,21 +16,19 @@ namespace aurora
 static constexpr int kMaxBlockSize = 96;
 
 /** @brief Global buffers for the LED driver
-     *  Non-cached for DMA usage.
-     */
+ *  Non-cached for DMA usage.
+ */
 static daisy::LedDriverPca9685<2, true>::DmaBuffer DMA_BUFFER_MEM_SECTION
     led_dma_buffer_a,
     led_dma_buffer_b;
 
 /** These are left global so that they will be in the AXI sram regardless
-     *  of the memory section used for the primary Hardware class.
-     */
+ *  of the memory section used for the primary Hardware class.
+ */
 daisy::USBHostHandle  usb;
 daisy::FatFSInterface fatfs_interface;
 
-/** @brief Hardware support class for the Aurora
-     *  Compatible with hardware rev3 and rev4
-     */
+/** @brief Hardware support class for the Qu-Bit Aurora */
 class Hardware
 {
   public:
@@ -62,25 +60,25 @@ class Hardware
 
     enum Controls
     {
-        CTRL_TIME,
-        CTRL_REFLECT,
-        CTRL_MIX,
-        CTRL_ATMOSPHERE,
-        CTRL_BLUR,
-        CTRL_WARP,
-        CTRL_LAST,
+        KNOB_TIME,
+        KNOB_REFLECT,
+        KNOB_MIX,
+        KNOB_ATMOSPHERE,
+        KNOB_BLUR,
+        KNOB_WARP,
+        KNOB_LAST,
     };
 
     enum Leds
     {
         LED_REVERSE,
         LED_FREEZE,
-        LED_ILLUM_1,
-        LED_ILLUM_2,
-        LED_ILLUM_4,
-        LED_ILLUM_3,
-        LED_ILLUM_6,
-        LED_ILLUM_8,
+        LED_1,
+        LED_2,
+        LED_3,
+        LED_4,
+        LED_5,
+        LED_6,
         LED_BOT_1,
         LED_BOT_2,
         LED_BOT_3,
@@ -264,7 +262,7 @@ class Hardware
         {
             cv[i].SetSampleRate(AudioCallbackRate());
         }
-        for(int i = 0; i < CTRL_LAST; i++)
+        for(int i = 0; i < KNOB_LAST; i++)
         {
             controls[i].SetSampleRate(AudioCallbackRate());
         }
@@ -284,7 +282,7 @@ class Hardware
 
     void ProcessAnalogControls()
     {
-        for(int i = 0; i < CTRL_LAST; i++)
+        for(int i = 0; i < KNOB_LAST; i++)
         {
             controls[i].Process();
         }
@@ -295,7 +293,7 @@ class Hardware
         }
     }
 
-    inline float GetKnobValue(int ctrl) { return controls[ctrl].Value(); }
+    inline float GetKnobValue(int ctrl) const { return controls[ctrl].Value(); }
 
     /** @brief mounts USB Drive for use if it is present */
     void PrepareMedia(
@@ -382,7 +380,7 @@ class Hardware
     daisy::AnalogControl cv[CV_LAST];
     daisy::Switch        switches[SW_LAST];
     daisy::GateIn        gates[GATE_LAST];
-    daisy::AnalogControl controls[CTRL_LAST];
+    daisy::AnalogControl controls[KNOB_LAST];
 
     daisy::DaisySeed seed;
 
@@ -507,7 +505,7 @@ class Hardware
             }
 
             // init pots as analog controls
-            for(size_t i = 0; i < CTRL_LAST; i++)
+            for(size_t i = 0; i < KNOB_LAST; i++)
             {
                 controls[i].Init(seed.adc.GetMuxPtr(CV_LAST, i),
                                  AudioCallbackRate());
@@ -521,28 +519,28 @@ class Hardware
         else
         {
             /** For the new version we have a different ADC layout */
-            daisy::AdcChannelConfig cfg[CV_LAST + CTRL_LAST];
+            daisy::AdcChannelConfig cfg[CV_LAST + KNOB_LAST];
             /** Read CVs then Pots for best consistency with last version */
-            cfg[CV_LAST + CTRL_TIME].InitSingle(daisy::seed::A0);
-            cfg[CV_LAST + CTRL_REFLECT].InitSingle(daisy::seed::A1);
+            cfg[CV_LAST + KNOB_TIME].InitSingle(daisy::seed::A0);
+            cfg[CV_LAST + KNOB_REFLECT].InitSingle(daisy::seed::A1);
             cfg[CV_ATMOSPHERE].InitSingle(daisy::seed::A2);
             cfg[CV_TIME].InitSingle(daisy::seed::A3);
             cfg[CV_MIX].InitSingle(daisy::seed::A4);
             cfg[CV_REFLECT].InitSingle(daisy::seed::A5);
             cfg[CV_BLUR].InitSingle(daisy::seed::A6);
             cfg[CV_WARP].InitSingle(daisy::seed::A7);
-            cfg[CV_LAST + CTRL_MIX].InitSingle(daisy::seed::A8);
-            cfg[CV_LAST + CTRL_WARP].InitSingle(daisy::seed::A9);
-            cfg[CV_LAST + CTRL_ATMOSPHERE].InitSingle(daisy::seed::A10);
-            cfg[CV_LAST + CTRL_BLUR].InitSingle(daisy::seed::A11);
-            seed.adc.Init(cfg, CV_LAST + CTRL_LAST);
+            cfg[CV_LAST + KNOB_MIX].InitSingle(daisy::seed::A8);
+            cfg[CV_LAST + KNOB_WARP].InitSingle(daisy::seed::A9);
+            cfg[CV_LAST + KNOB_ATMOSPHERE].InitSingle(daisy::seed::A10);
+            cfg[CV_LAST + KNOB_BLUR].InitSingle(daisy::seed::A11);
+            seed.adc.Init(cfg, CV_LAST + KNOB_LAST);
 
             for(size_t i = 0; i < CV_LAST; i++)
             {
                 cv[i].InitBipolarCv(seed.adc.GetPtr(i), AudioCallbackRate());
             }
             // init pots as analog controls with offset to last CV for ptr
-            for(size_t i = 0; i < CTRL_LAST; i++)
+            for(size_t i = 0; i < KNOB_LAST; i++)
             {
                 controls[i].Init(seed.adc.GetPtr(CV_LAST + i),
                                  AudioCallbackRate());
