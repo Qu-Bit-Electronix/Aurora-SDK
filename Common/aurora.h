@@ -474,22 +474,36 @@ class Hardware
             return cv[cv_idx].Value();
     }
 
+    /** @brief called during a customized calibration UI to record the 1V value */
     inline void CalibrateV1(float v1) { warp_v1_ = v1; }
+
+    /** @brief called during a customized calibration UI to record the 3V value 
+     *         and set that calibraiton has completed and can be saved. 
+     */
     inline void CalibrateV3(float v3)
     {
         warp_v3_ = v3;
         voct_cal.Record(warp_v1_, warp_v3_);
         cal_save_flag_ = true;
     }
+
+    /** @brief Sets the calibration data for 1V/Octave over Warp CV 
+     *  typically set after reading stored data from external memory.
+     */
     inline void SetWarpCalData(float scale, float offset)
     {
         voct_cal.SetData(scale, offset);
     }
+
+    /** @brief Gets the current calibration data for 1V/Octave over Warp CV 
+     *  typically used to prepare data for storing after successful calibration
+     */
     inline void GetWarpCalData(float &scale, float &offset)
     {
         voct_cal.GetData(scale, offset);
     }
 
+    /** @brief Sets the cv offset from an externally array of data */
     inline void SetCvOffsetData(float *data)
     {
         for(int i = 0; i < CV_LAST; i++)
@@ -498,6 +512,7 @@ class Hardware
         }
     }
 
+    /** Fills an array with the offset data currently being used */
     inline void GetCvOffsetData(float *data)
     {
         for(int i = 0; i < CV_LAST; i++)
@@ -509,13 +524,22 @@ class Hardware
     /** @brief Checks to see if calibration has been completed and needs to be saved */
     inline bool ReadyToSaveCal() const { return cal_save_flag_; }
 
+    /** @brief signal the cal-save flag to clear once calibration data has been written to ext. flash memory */
     inline void ClearSaveCalFlag() { cal_save_flag_ = false; }
 
+    /** Array of CV inputs */
     daisy::AnalogControl cv[CV_LAST];
-    daisy::Switch        switches[SW_LAST];
-    daisy::GateIn        gates[GATE_LAST];
+
+    /** Array of momentary switches */
+    daisy::Switch switches[SW_LAST];
+
+    /** Array of gate inputs */
+    daisy::GateIn gates[GATE_LAST];
+
+    /** Array of knob controls */
     daisy::AnalogControl controls[KNOB_LAST];
 
+    /** Daisy Seed base object */
     daisy::DaisySeed seed;
 
   private:
