@@ -38,6 +38,42 @@ daisy::USBHostHandle usb;
  */
 daisy::FatFSInterface fatfs_interface;
 
+/** @brief Calibration data container for Aurora 
+ *  This data is calibrated from the Qu-Bit default Aurora firmware.
+ *  It is advised not to save over this data unless you are prepared to recalibrate.
+*/
+struct CalibrationData
+{
+    CalibrationData() : warp_scale(60.f), warp_offset(0.f), cv_offset{0.f} {}
+    float warp_scale, warp_offset;
+    float cv_offset[Hardware::CV_LAST];
+
+    /** @brief checks sameness */
+    bool operator==(const CalibrationData &rhs)
+    {
+        if(warp_scale != rhs.warp_scale)
+        {
+            return false;
+        }
+        else if(warp_offset != rhs.warp_offset)
+        {
+            return false;
+        }
+        else
+        {
+            for(int i = 0; i < Hardware::CV_LAST; i++)
+            {
+                if(cv_offset[i] != rhs.cv_offset[i])
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    /** @brief Not equal operator */
+    bool operator!=(const CalibrationData &rhs) { return !operator==(rhs); }
+};
+
 /** @brief Hardware support class for the Qu-Bit Aurora 
  *  This should be created, and intitialized at the beginning of any program
  *  before running anything else.
@@ -150,6 +186,8 @@ class Hardware
         SetAudioSampleRate(daisy::SaiHandle::Config::SampleRate::SAI_48KHZ);
         SetAudioBlockSize(96);
         UpdateHidRates();
+
+        LoadCalibrationData();
         cal_save_flag_ = false;
         for(int i = 0; i < CV_LAST; i++)
         {
@@ -543,6 +581,13 @@ class Hardware
     daisy::DaisySeed seed;
 
   private:
+    /** @brief Address offset where calibration data is stored in the Aurora 
+     *  default firmware.
+     *  This data is calibrated from the Qu-Bit default Aurora firmware.
+     *  It is advised not to save over this data unless you are prepared to recalibrate.
+    */
+    static constexpr uint32_t kCalibrationDataOffset = 4096;
+
     /** @brief Internal struct for managing LED indices */
     struct LedIdx
     {
@@ -571,6 +616,7 @@ class Hardware
         REV4, /**< s2dfm */
     };
 
+
     daisy::LedDriverPca9685<2, true> led_driver_;
 
     daisy::AudioHandle::AudioCallback current_cb_;
@@ -587,6 +633,7 @@ class Hardware
     float                  cv_offsets_[CV_LAST];
 
     bool cal_save_flag_;
+
 
     void ConfigureAudio()
     {
@@ -746,6 +793,17 @@ class Hardware
             return HardwareVersion::REV3;
         else
             return HardwareVersion::REV4;
+    }
+
+    /** @brief Loads and sets calibration data */
+    void LoadCalibrationData()
+    {
+        daisy::PersistentStorage<CalibrationData> cal_storage(seed.qspi);
+        CalibrationData                           default_cal;
+        cal_storage.Init(default_cal, kCalibrationDataOffset);
+        auto &cal_data = cal_storage.GetSettings();
+        SetWarpCalData(cal_data.warp_scale, cal_data.warp_offset);
+        SetCvOffsetData(cal_data.cv_offset);
     }
 };
 
