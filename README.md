@@ -8,7 +8,7 @@ Below we'll cover some basic topics to get started writing your own code to run 
 
 TODO: Add some info!
 
-* [ ] Run the examples
+* [ ] Run the examples and overviews
 * [ ] Flash the original firmware back onto the module
 * [ ] Install the Toolchain
 * [ ] Compile one of the examples
@@ -16,6 +16,7 @@ TODO: Add some info!
 * [ ] Create your own example
 * [ ] Create your own project to share on Github
 * [ ] Share your firmware with the community!
+* [ ] Debugging with an ST-Link (optional)
 
 ## Reading and Running Examples
 

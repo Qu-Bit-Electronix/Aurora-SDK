@@ -4,8 +4,9 @@ on:
   push:
     branches: [ main ] # only gen docs for pushes to main
     paths:
-    - 'include'
-    - 'docs'
+    - 'include/*'
+    - 'docs/*'
+    - './README.md'
 jobs:
   # creates a dist/documentation/* folder containing the html documentation
   deploy-local: 
