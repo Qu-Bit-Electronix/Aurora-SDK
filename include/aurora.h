@@ -617,8 +617,10 @@ class Hardware
     };
 
 
+    /** @brief LED driver object for internal use */
     daisy::LedDriverPca9685<2, true> led_driver_;
 
+    /** @brief tracking current callback for recovery after samplerate change */
     daisy::AudioHandle::AudioCallback current_cb_;
 
     daisy::TimerHandle tim5_handle;
