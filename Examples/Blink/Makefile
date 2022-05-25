@@ -12,6 +12,13 @@ CPP_SOURCES = Blink.cpp
 # update this to point to the Aurora-SDK/ folder
 AURORA_SDK_PATH = ../..
 
+# Location of Hardware Support File within the SDK
+C_INCLUDES += -I$(AURORA_SDK_PATH)/include/
+
+# Library Locations
+LIBDAISY_DIR = $(AURORA_SDK_PATH)/libDaisy/
+DAISYSP_DIR = $(AURORA_SDK_PATH)/DaisySP/
+
 # To DEBUG the project with an ST-Link Probe:
 # 1. Compile the program with the below lines uncommented
 # 2. Load the firmware via the USB drive
@@ -22,13 +29,6 @@ AURORA_SDK_PATH = ../..
 
 # DEBUG = 1
 # OPT = -O0
-
-# Location of Hardware Support File
-C_INCLUDES += -I$(AURORA_SDK_PATH)/Common/
-
-# Library Locations
-LIBDAISY_DIR = $(AURORA_SDK_PATH)/libDaisy/
-DAISYSP_DIR = $(AURORA_SDK_PATH)/DaisySP/
 
 # Core location, and generic Makefile.
 SYSTEM_FILES_DIR = $(LIBDAISY_DIR)/core
