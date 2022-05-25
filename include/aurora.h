@@ -38,6 +38,80 @@ daisy::USBHostHandle usb;
  */
 daisy::FatFSInterface fatfs_interface;
 
+/** @brief indexed accessors for knob controls 
+ *  Example usage:
+ *  float val = hw.GetKnobValue(KNOB_TIME);
+ */
+enum ControlKnobs
+{
+    KNOB_TIME,
+    KNOB_REFLECT,
+    KNOB_MIX,
+    KNOB_ATMOSPHERE,
+    KNOB_BLUR,
+    KNOB_WARP,
+    KNOB_LAST,
+};
+
+/** @brief indexed accessors for CV controls 
+ *  Example usage:
+ *  float val = hw.GetCvValue(CV_ATMOSPHERE);
+ */
+enum ControlCVs
+{
+    CV_ATMOSPHERE,
+    CV_TIME,
+    CV_MIX,
+    CV_REFLECT,
+    CV_BLUR,
+    CV_WARP,
+    CV_LAST,
+};
+
+/** @brief indexed accessors for momentary switches 
+ *  Example usage:
+ *  bool state = hw.GetSwitch(SW_FREEZE).Pressed();
+ */
+enum Switches
+{
+    SW_FREEZE,
+    SW_REVERSE,
+    SW_SHIFT,
+    SW_LAST,
+};
+
+/** @brief indexed accessors for momentary switches 
+ *  Example usage:
+ *  bool trig = hw.GetGateTrig(GATE_FREEZE);
+ */
+enum Gates
+{
+    GATE_FREEZE,
+    GATE_REVERSE,
+    GATE_LAST,
+};
+
+
+/** @brief indexed accessors for RGB LEDs 
+ *  Example usage:
+ *  hw.SetLed(LED_FREEZE, 0.f, 0.f, 1.f);
+ */
+enum Leds
+{
+    LED_REVERSE,
+    LED_FREEZE,
+    LED_1,
+    LED_2,
+    LED_3,
+    LED_4,
+    LED_5,
+    LED_6,
+    LED_BOT_1,
+    LED_BOT_2,
+    LED_BOT_3,
+    LED_LAST,
+};
+
 /** @brief Calibration data container for Aurora 
  *  This data is calibrated from the Qu-Bit default Aurora firmware.
  *  It is advised not to save over this data unless you are prepared to recalibrate.
@@ -46,7 +120,7 @@ struct CalibrationData
 {
     CalibrationData() : warp_scale(60.f), warp_offset(0.f), cv_offset{0.f} {}
     float warp_scale, warp_offset;
-    float cv_offset[Hardware::CV_LAST];
+    float cv_offset[CV_LAST];
 
     /** @brief checks sameness */
     bool operator==(const CalibrationData &rhs)
@@ -61,7 +135,7 @@ struct CalibrationData
         }
         else
         {
-            for(int i = 0; i < Hardware::CV_LAST; i++)
+            for(int i = 0; i < CV_LAST; i++)
             {
                 if(cv_offset[i] != rhs.cv_offset[i])
                     return false;
@@ -84,80 +158,6 @@ struct CalibrationData
 class Hardware
 {
   public:
-    /** @brief indexed accessors for knob controls 
-     *  Example usage:
-     *  float val = hw.GetKnobValue(KNOB_TIME);
-     */
-    enum ControlKnobs
-    {
-        KNOB_TIME,
-        KNOB_REFLECT,
-        KNOB_MIX,
-        KNOB_ATMOSPHERE,
-        KNOB_BLUR,
-        KNOB_WARP,
-        KNOB_LAST,
-    };
-
-    /** @brief indexed accessors for CV controls 
-     *  Example usage:
-     *  float val = hw.GetCvValue(CV_ATMOSPHERE);
-     */
-    enum ControlCVs
-    {
-        CV_ATMOSPHERE,
-        CV_TIME,
-        CV_MIX,
-        CV_REFLECT,
-        CV_BLUR,
-        CV_WARP,
-        CV_LAST,
-    };
-
-    /** @brief indexed accessors for momentary switches 
-     *  Example usage:
-     *  bool state = hw.GetSwitch(SW_FREEZE).Pressed();
-     */
-    enum Switches
-    {
-        SW_FREEZE,
-        SW_REVERSE,
-        SW_SHIFT,
-        SW_LAST,
-    };
-
-    /** @brief indexed accessors for momentary switches 
-     *  Example usage:
-     *  bool trig = hw.GetGateTrig(GATE_FREEZE);
-     */
-    enum Gates
-    {
-        GATE_FREEZE,
-        GATE_REVERSE,
-        GATE_LAST,
-    };
-
-
-    /** @brief indexed accessors for RGB LEDs 
-     *  Example usage:
-     *  hw.SetLed(LED_FREEZE, 0.f, 0.f, 1.f);
-     */
-    enum Leds
-    {
-        LED_REVERSE,
-        LED_FREEZE,
-        LED_1,
-        LED_2,
-        LED_3,
-        LED_4,
-        LED_5,
-        LED_6,
-        LED_BOT_1,
-        LED_BOT_2,
-        LED_BOT_3,
-        LED_LAST,
-    };
-
     /** @brief Empty Constructor 
      *  Call `Init` from main to initialize
     */
