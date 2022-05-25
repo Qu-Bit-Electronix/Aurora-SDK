@@ -1,0 +1,630 @@
+\hypertarget{aurora_8h_source}{}\doxysection{aurora.\+h}
+\label{aurora_8h_source}\index{include/aurora.h@{include/aurora.h}}
+\mbox{\hyperlink{aurora_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#ifndef AURORA\_HW\_H}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define AURORA\_HW\_H}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}daisy\_seed.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}fatfs.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define DTCMRAM \_\_attribute\_\_((section("{}.dtcmram\_bss"{}})))}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define D2RAM \_\_attribute\_\_((section("{}.d2\_bss"{}})))}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define D2RAM2 \_\_attribute\_\_((section("{}.d2r2\_bss"{}})))}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define ITCMRAM \_\_attribute\_\_((section("{}.itcmram\_bss"{}})))}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespaceaurora}{aurora}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{20 \textcolor{keyword}{static} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{int} kMaxBlockSize = 96;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{25 \textcolor{keyword}{static} daisy::LedDriverPca9685<2, true>::DmaBuffer DMA\_BUFFER\_MEM\_SECTION}
+\DoxyCodeLine{26     led\_dma\_buffer\_a,}
+\DoxyCodeLine{27     led\_dma\_buffer\_b;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{33 daisy::USBHostHandle \mbox{\hyperlink{namespaceaurora_add63f29f2efd87c1754e7add264350e8}{usb}};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{39 daisy::FatFSInterface \mbox{\hyperlink{namespaceaurora_a300b1377a387f60ff447c08d7a747877}{fatfs\_interface}};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{45 \textcolor{keyword}{enum} \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbceca}{ControlKnobs}}}
+\DoxyCodeLine{46 \{}
+\DoxyCodeLine{47     \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa7355bc47484ac9009e9ae5ea4519711c}{KNOB\_TIME}},}
+\DoxyCodeLine{48     \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa5e99ba973f08c9c45bc352aaa8d9315b}{KNOB\_REFLECT}},}
+\DoxyCodeLine{49     \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa4030ec072fbbcc5198927f787fc381ae}{KNOB\_MIX}},}
+\DoxyCodeLine{50     \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa26e02f7c718ee0ba934d0fc005355179}{KNOB\_ATMOSPHERE}},}
+\DoxyCodeLine{51     \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa309901733cbf3f6fd847f847b88ff47d}{KNOB\_BLUR}},}
+\DoxyCodeLine{52     \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa132e93ba27b993bd7bc17d340be96928}{KNOB\_WARP}},}
+\DoxyCodeLine{53     \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa3fb7dc106c0f263d2f7843c3d85519e3}{KNOB\_LAST}},}
+\DoxyCodeLine{54 \};}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{60 \textcolor{keyword}{enum} \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06b}{ControlCVs}}}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62     \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba14a9a281ea2e5fb0f4643ea71ac8f4fc}{CV\_ATMOSPHERE}},}
+\DoxyCodeLine{63     \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba99ad46bf89ab0808918343824a12003d}{CV\_TIME}},}
+\DoxyCodeLine{64     \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba20130ae1b93454a79fc03aeebe1c3459}{CV\_MIX}},}
+\DoxyCodeLine{65     \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba53094bc7122e2e060a025919c0b4c006}{CV\_REFLECT}},}
+\DoxyCodeLine{66     \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba38a54728d2de8f46f2a0ec1e9b93d922}{CV\_BLUR}},}
+\DoxyCodeLine{67     \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba53812239f728e42ebeffcdcb9c076345}{CV\_WARP}},}
+\DoxyCodeLine{68     \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}},}
+\DoxyCodeLine{69 \};}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{75 \textcolor{keyword}{enum} \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921}{Switches}}}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a725a2822002e2209fc0916f2173d3271}{SW\_FREEZE}},}
+\DoxyCodeLine{78     \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a45ae311227c962283f6c55b0b865b8c2}{SW\_REVERSE}},}
+\DoxyCodeLine{79     \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a6544313cfea960b855983f2c347ea96a}{SW\_SHIFT}},}
+\DoxyCodeLine{80     \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a77fb243b24a94ebedcf2251056027b64}{SW\_LAST}},}
+\DoxyCodeLine{81 \};}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{87 \textcolor{keyword}{enum} \mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3e}{Gates}}}
+\DoxyCodeLine{88 \{}
+\DoxyCodeLine{89     \mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3eaa74bc67b4d25cfae7d624cc022afda9e}{GATE\_FREEZE}},}
+\DoxyCodeLine{90     \mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3ea57f639eba139528e9d5976c480688885}{GATE\_REVERSE}},}
+\DoxyCodeLine{91     \mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3ea8a43310078f25453bf3286dfcac4a2f5}{GATE\_LAST}},}
+\DoxyCodeLine{92 \};}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94 }
+\DoxyCodeLine{99 \textcolor{keyword}{enum} \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1e}{Leds}}}
+\DoxyCodeLine{100 \{}
+\DoxyCodeLine{101     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea86982932ab7fceff1b3ed9de87f9a76d}{LED\_REVERSE}},}
+\DoxyCodeLine{102     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eae68413e53d500917bb75e2cae59f3730}{LED\_FREEZE}},}
+\DoxyCodeLine{103     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea65e83be6acc64c896bb19b9935b2609f}{LED\_1}},}
+\DoxyCodeLine{104     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaab18baf373916582c323adb76225530c}{LED\_2}},}
+\DoxyCodeLine{105     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaec6469783dfe550322a1607be048efa5}{LED\_3}},}
+\DoxyCodeLine{106     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eae9295b936e7a9fb1d1dde59c33fc984b}{LED\_4}},}
+\DoxyCodeLine{107     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea2796848b297e45ac06f7e044aeb5a72a}{LED\_5}},}
+\DoxyCodeLine{108     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea8d53466cd8e0ca6e26db667a712b3355}{LED\_6}},}
+\DoxyCodeLine{109     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaa0f415470c1fdebdfec36875368a4344}{LED\_BOT\_1}},}
+\DoxyCodeLine{110     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea3828db9a1a9a0af93a0c2c5115698096}{LED\_BOT\_2}},}
+\DoxyCodeLine{111     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea8624f9c01b04230b5b2c17453bd52068}{LED\_BOT\_3}},}
+\DoxyCodeLine{112     \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaa843f019f3d74106e40f62494ddf0c65}{LED\_LAST}},}
+\DoxyCodeLine{113 \};}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{119 \textcolor{keyword}{struct }\mbox{\hyperlink{structaurora_1_1_calibration_data}{CalibrationData}}}
+\DoxyCodeLine{120 \{}
+\DoxyCodeLine{121     \mbox{\hyperlink{structaurora_1_1_calibration_data_a5a7d13ebabd35f636552609195866412}{CalibrationData}}() : \mbox{\hyperlink{structaurora_1_1_calibration_data_a7e6762ab247441c83ec2ca5a4f144aaf}{warp\_scale}}(60.f), \mbox{\hyperlink{structaurora_1_1_calibration_data_a0e627bce3225368e323af33d1b25163e}{warp\_offset}}(0.f), \mbox{\hyperlink{structaurora_1_1_calibration_data_ad81e9e57211284b888de3dd4311849ab}{cv\_offset}}\{0.f\} \{\}}
+\DoxyCodeLine{122     \textcolor{keywordtype}{float} \mbox{\hyperlink{structaurora_1_1_calibration_data_a7e6762ab247441c83ec2ca5a4f144aaf}{warp\_scale}}, \mbox{\hyperlink{structaurora_1_1_calibration_data_a0e627bce3225368e323af33d1b25163e}{warp\_offset}};}
+\DoxyCodeLine{123     \textcolor{keywordtype}{float} \mbox{\hyperlink{structaurora_1_1_calibration_data_ad81e9e57211284b888de3dd4311849ab}{cv\_offset}}[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}];}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{126     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structaurora_1_1_calibration_data_a41f449cabeceb25d3ac24b7f7493a8c1}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{structaurora_1_1_calibration_data}{CalibrationData}} \&rhs)}
+\DoxyCodeLine{127     \{}
+\DoxyCodeLine{128         \textcolor{keywordflow}{if}(\mbox{\hyperlink{structaurora_1_1_calibration_data_a7e6762ab247441c83ec2ca5a4f144aaf}{warp\_scale}} != rhs.\mbox{\hyperlink{structaurora_1_1_calibration_data_a7e6762ab247441c83ec2ca5a4f144aaf}{warp\_scale}})}
+\DoxyCodeLine{129         \{}
+\DoxyCodeLine{130             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{131         \}}
+\DoxyCodeLine{132         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{structaurora_1_1_calibration_data_a0e627bce3225368e323af33d1b25163e}{warp\_offset}} != rhs.\mbox{\hyperlink{structaurora_1_1_calibration_data_a0e627bce3225368e323af33d1b25163e}{warp\_offset}})}
+\DoxyCodeLine{133         \{}
+\DoxyCodeLine{134             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{135         \}}
+\DoxyCodeLine{136         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{137         \{}
+\DoxyCodeLine{138             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}; i++)}
+\DoxyCodeLine{139             \{}
+\DoxyCodeLine{140                 \textcolor{keywordflow}{if}(\mbox{\hyperlink{structaurora_1_1_calibration_data_ad81e9e57211284b888de3dd4311849ab}{cv\_offset}}[i] != rhs.\mbox{\hyperlink{structaurora_1_1_calibration_data_ad81e9e57211284b888de3dd4311849ab}{cv\_offset}}[i])}
+\DoxyCodeLine{141                     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{142             \}}
+\DoxyCodeLine{143         \}}
+\DoxyCodeLine{144         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{145     \}}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{148     \textcolor{keywordtype}{bool} \mbox{\hyperlink{structaurora_1_1_calibration_data_a86af54bbbf7080b22224c0d33d83d9ba}{operator!=}}(\textcolor{keyword}{const} \mbox{\hyperlink{structaurora_1_1_calibration_data}{CalibrationData}} \&rhs) \{ \textcolor{keywordflow}{return} !\mbox{\hyperlink{structaurora_1_1_calibration_data_a41f449cabeceb25d3ac24b7f7493a8c1}{operator==}}(rhs); \}}
+\DoxyCodeLine{149 \};}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{158 \textcolor{keyword}{class }\mbox{\hyperlink{classaurora_1_1_hardware}{Hardware}}}
+\DoxyCodeLine{159 \{}
+\DoxyCodeLine{160   \textcolor{keyword}{public}:}
+\DoxyCodeLine{164     \mbox{\hyperlink{classaurora_1_1_hardware_a408e32e9bff8a58db98aabea9b4cfe51}{Hardware}}() \{\}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{169     \mbox{\hyperlink{classaurora_1_1_hardware_a5059921c098da2e193c17dd54fddc9e8}{\string~Hardware}}() \{\}}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{178     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_ae28c61e1df5ed8b16112f65e1b463ff8}{Init}}(\textcolor{keywordtype}{bool} boost = \textcolor{keyword}{true})}
+\DoxyCodeLine{179     \{}
+\DoxyCodeLine{180         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.Init(boost);}
+\DoxyCodeLine{181         hw\_version = GetBoardRevision();}
+\DoxyCodeLine{182         ConfigureAudio();}
+\DoxyCodeLine{183         ConfigureControls();}
+\DoxyCodeLine{184         ConfigureLeds();}
+\DoxyCodeLine{185         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.adc.Start();}
+\DoxyCodeLine{186         \mbox{\hyperlink{classaurora_1_1_hardware_afd8e9b305b13614c94e095e521de142c}{SetAudioSampleRate}}(daisy::SaiHandle::Config::SampleRate::SAI\_48KHZ);}
+\DoxyCodeLine{187         \mbox{\hyperlink{classaurora_1_1_hardware_aa7205d245f0b220379dd42e33031aee6}{SetAudioBlockSize}}(96);}
+\DoxyCodeLine{188         \mbox{\hyperlink{classaurora_1_1_hardware_a1409ef9c06403f3793537b8dce62af56}{UpdateHidRates}}();}
+\DoxyCodeLine{189 }
+\DoxyCodeLine{190         LoadCalibrationData();}
+\DoxyCodeLine{191         cal\_save\_flag\_ = \textcolor{keyword}{false};}
+\DoxyCodeLine{192         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}; i++)}
+\DoxyCodeLine{193         \{}
+\DoxyCodeLine{194             cv\_offsets\_[i] = 0.f;}
+\DoxyCodeLine{195         \}}
+\DoxyCodeLine{196     \}}
+\DoxyCodeLine{197 }
+\DoxyCodeLine{203     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_abb0131cca6e4ccdaa6791aca1fb04c9b}{DelayMs}}(\textcolor{keywordtype}{size\_t} del) \{ \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.DelayMs(del); \}}
+\DoxyCodeLine{204 }
+\DoxyCodeLine{213     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_abb134a8f6729b9379b3a1da933340392}{StartLowPriorityCallback}}(daisy::TimerHandle::PeriodElapsedCallback cb,}
+\DoxyCodeLine{214                                   uint32\_t target\_freq,}
+\DoxyCodeLine{215                                   \textcolor{keywordtype}{void}    *data = \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{216     \{}
+\DoxyCodeLine{217         daisy::TimerHandle::Config timcfg;}
+\DoxyCodeLine{218         timcfg.periph        = daisy::TimerHandle::Config::Peripheral::TIM\_5;}
+\DoxyCodeLine{219         timcfg.dir           = daisy::TimerHandle::Config::CounterDir::UP;}
+\DoxyCodeLine{220         \textcolor{keyword}{auto} tim\_base\_freq   = daisy::System::GetPClk2Freq();}
+\DoxyCodeLine{221         \textcolor{keyword}{auto} tim\_target\_freq = target\_freq;}
+\DoxyCodeLine{222         \textcolor{keyword}{auto} tim\_period      = tim\_base\_freq / tim\_target\_freq;}
+\DoxyCodeLine{223         timcfg.period        = tim\_period;}
+\DoxyCodeLine{224         timcfg.enable\_irq    = \textcolor{keyword}{true};}
+\DoxyCodeLine{225         tim5\_handle.Init(timcfg);}
+\DoxyCodeLine{226         tim5\_handle.SetCallback(cb, data);}
+\DoxyCodeLine{228         tim5\_handle.Start();}
+\DoxyCodeLine{229     \}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{232     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a5326282c8311afe5eb977c659e20eb58}{StartAudio}}(daisy::AudioHandle::InterleavingAudioCallback cb)}
+\DoxyCodeLine{233     \{}
+\DoxyCodeLine{234         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.StartAudio(cb);}
+\DoxyCodeLine{235     \}}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{241     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a109f3b7352656c0cf9c4af1d93411819}{StartAudio}}(daisy::AudioHandle::AudioCallback cb)}
+\DoxyCodeLine{242     \{}
+\DoxyCodeLine{243         current\_cb\_ = cb;}
+\DoxyCodeLine{244         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.StartAudio(cb);}
+\DoxyCodeLine{245     \}}
+\DoxyCodeLine{246 }
+\DoxyCodeLine{248     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a283146257c8f77b8a0e72f3d2025cf93}{ChangeAudioCallback}}(daisy::AudioHandle::InterleavingAudioCallback cb)}
+\DoxyCodeLine{249     \{}
+\DoxyCodeLine{250         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.ChangeAudioCallback(cb);}
+\DoxyCodeLine{251     \}}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253 }
+\DoxyCodeLine{255     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_aee36d4d80dc37991ef018c9d8839768b}{ChangeAudioCallback}}(daisy::AudioHandle::AudioCallback cb)}
+\DoxyCodeLine{256     \{}
+\DoxyCodeLine{257         current\_cb\_ = cb;}
+\DoxyCodeLine{258         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.ChangeAudioCallback(cb);}
+\DoxyCodeLine{259     \}}
+\DoxyCodeLine{260 }
+\DoxyCodeLine{267     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_aa1052faa54a363f9c84be71272fea7b1}{ChangeSampleRate}}(\textcolor{keywordtype}{int} sr)}
+\DoxyCodeLine{268     \{}
+\DoxyCodeLine{269         daisy::SaiHandle::Config::SampleRate srval;}
+\DoxyCodeLine{270         \textcolor{keywordtype}{size\_t}                               new\_blocksize = 96;}
+\DoxyCodeLine{271         \textcolor{keywordflow}{switch}(sr)}
+\DoxyCodeLine{272         \{}
+\DoxyCodeLine{273             \textcolor{keywordflow}{case} 16000:}
+\DoxyCodeLine{274                 srval = daisy::SaiHandle::Config::SampleRate::SAI\_16KHZ;}
+\DoxyCodeLine{275                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{276             \textcolor{keywordflow}{case} 32000:}
+\DoxyCodeLine{277                 srval = daisy::SaiHandle::Config::SampleRate::SAI\_32KHZ;}
+\DoxyCodeLine{278                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{279             \textcolor{keywordflow}{case} 48000:}
+\DoxyCodeLine{280                 srval = daisy::SaiHandle::Config::SampleRate::SAI\_48KHZ;}
+\DoxyCodeLine{281                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{282             \textcolor{keywordflow}{case} 96000:}
+\DoxyCodeLine{283                 srval         = daisy::SaiHandle::Config::SampleRate::SAI\_96KHZ;}
+\DoxyCodeLine{284                 new\_blocksize = 48;}
+\DoxyCodeLine{285                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{286             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{287                 srval = daisy::SaiHandle::Config::SampleRate::SAI\_48KHZ;}
+\DoxyCodeLine{288                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{289         \}}
+\DoxyCodeLine{290         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.StopAudio();}
+\DoxyCodeLine{291         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.SetAudioSampleRate(srval);}
+\DoxyCodeLine{292         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.SetAudioBlockSize(new\_blocksize);}
+\DoxyCodeLine{293         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.StartAudio(current\_cb\_);}
+\DoxyCodeLine{294     \}}
+\DoxyCodeLine{295 }
+\DoxyCodeLine{297     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a11de774c59fe3186fd7ec2d2688dd035}{StopAudio}}() \{ \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.StopAudio(); \}}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{302     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_afd8e9b305b13614c94e095e521de142c}{SetAudioSampleRate}}(daisy::SaiHandle::Config::SampleRate samplerate)}
+\DoxyCodeLine{303     \{}
+\DoxyCodeLine{304         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.SetAudioSampleRate(samplerate);}
+\DoxyCodeLine{305     \}}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{311     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a0a641f21805e52d7f55536b65f163559}{SetAudioSampleRate}}(\textcolor{keywordtype}{int} samplerate)}
+\DoxyCodeLine{312     \{}
+\DoxyCodeLine{313         daisy::SaiHandle::Config::SampleRate srval;}
+\DoxyCodeLine{314         \textcolor{keywordflow}{switch}(samplerate)}
+\DoxyCodeLine{315         \{}
+\DoxyCodeLine{316             \textcolor{keywordflow}{case} 16000:}
+\DoxyCodeLine{317                 srval = daisy::SaiHandle::Config::SampleRate::SAI\_16KHZ;}
+\DoxyCodeLine{318                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{319             \textcolor{keywordflow}{case} 32000:}
+\DoxyCodeLine{320                 srval = daisy::SaiHandle::Config::SampleRate::SAI\_32KHZ;}
+\DoxyCodeLine{321                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{322             \textcolor{keywordflow}{case} 48000:}
+\DoxyCodeLine{323                 srval = daisy::SaiHandle::Config::SampleRate::SAI\_48KHZ;}
+\DoxyCodeLine{324                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{325             \textcolor{keywordflow}{case} 96000:}
+\DoxyCodeLine{326                 srval = daisy::SaiHandle::Config::SampleRate::SAI\_96KHZ;}
+\DoxyCodeLine{327                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{328             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{329                 srval = daisy::SaiHandle::Config::SampleRate::SAI\_48KHZ;}
+\DoxyCodeLine{330                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{331         \}}
+\DoxyCodeLine{332         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.SetAudioSampleRate(srval);}
+\DoxyCodeLine{333     \}}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{336     \textcolor{keywordtype}{float} \mbox{\hyperlink{classaurora_1_1_hardware_acfbbc94dbfc32ceb5722dd110543239a}{AudioSampleRate}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.audio\_handle.GetSampleRate(); \}}
+\DoxyCodeLine{337 }
+\DoxyCodeLine{339     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_aa7205d245f0b220379dd42e33031aee6}{SetAudioBlockSize}}(\textcolor{keywordtype}{size\_t} blocksize)}
+\DoxyCodeLine{340     \{}
+\DoxyCodeLine{341         \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.SetAudioBlockSize(blocksize);}
+\DoxyCodeLine{342     \}}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{345     \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{classaurora_1_1_hardware_a68e41ade8aac5f5b7c0e4b5b5e720389}{AudioBlockSize}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.AudioBlockSize(); \}}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{348     \textcolor{keywordtype}{float} \mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.AudioCallbackRate(); \}}
+\DoxyCodeLine{349 }
+\DoxyCodeLine{351     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a5173957d8c34b3d0c8f7965152d0c015}{SetTestLed}}(\textcolor{keywordtype}{bool} state) \{ \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.SetLed(state); \}}
+\DoxyCodeLine{352 }
+\DoxyCodeLine{358     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a07069982db84a01fc8b9ecd11ab1cc6d}{ClearLeds}}()}
+\DoxyCodeLine{359     \{}
+\DoxyCodeLine{360         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaa843f019f3d74106e40f62494ddf0c65}{LED\_LAST}}; i++)}
+\DoxyCodeLine{361         \{}
+\DoxyCodeLine{362             \mbox{\hyperlink{classaurora_1_1_hardware_adbdb1f3307f6280acf7c2743e685043b}{SetLed}}((\mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1e}{Leds}})i, 0.0f, 0.0f, 0.0f);}
+\DoxyCodeLine{363         \}}
+\DoxyCodeLine{364     \}}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{371     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_ab8cb3c31427a2edc37038e78bbf27ce0}{WriteLeds}}() \{ led\_driver\_.SwapBuffersAndTransmit(); \}}
+\DoxyCodeLine{372 }
+\DoxyCodeLine{379     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_adbdb1f3307f6280acf7c2743e685043b}{SetLed}}(\mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1e}{Leds}} idx, \textcolor{keywordtype}{float} r, \textcolor{keywordtype}{float} g, \textcolor{keywordtype}{float} b)}
+\DoxyCodeLine{380     \{}
+\DoxyCodeLine{381         LedIdx led = LedMap[idx];}
+\DoxyCodeLine{382         \textcolor{keywordflow}{if}(led.r != -\/1)}
+\DoxyCodeLine{383             led\_driver\_.SetLed(led.r, r);}
+\DoxyCodeLine{384         led\_driver\_.SetLed(led.g, g);}
+\DoxyCodeLine{385         led\_driver\_.SetLed(led.b, b);}
+\DoxyCodeLine{386     \}}
+\DoxyCodeLine{387 }
+\DoxyCodeLine{391     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a55b1cae42552b2e126e207ede05a217e}{ProcessAllControls}}()}
+\DoxyCodeLine{392     \{}
+\DoxyCodeLine{393         \mbox{\hyperlink{classaurora_1_1_hardware_a0a63c31dc3e81f4886eb02d099f37da0}{ProcessAnalogControls}}();}
+\DoxyCodeLine{394         \mbox{\hyperlink{classaurora_1_1_hardware_ad15c633e129da7cd8630e79b9853c5e9}{ProcessDigitalControls}}();}
+\DoxyCodeLine{395     \}}
+\DoxyCodeLine{396 }
+\DoxyCodeLine{400     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_ad15c633e129da7cd8630e79b9853c5e9}{ProcessDigitalControls}}()}
+\DoxyCodeLine{401     \{}
+\DoxyCodeLine{402         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a77fb243b24a94ebedcf2251056027b64}{SW\_LAST}}; i++)}
+\DoxyCodeLine{403         \{}
+\DoxyCodeLine{404             \mbox{\hyperlink{classaurora_1_1_hardware_a079847333f7bda3f804b895443b37abd}{switches}}[i].Debounce();}
+\DoxyCodeLine{405         \}}
+\DoxyCodeLine{406     \}}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{411     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a0a63c31dc3e81f4886eb02d099f37da0}{ProcessAnalogControls}}()}
+\DoxyCodeLine{412     \{}
+\DoxyCodeLine{413         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa3fb7dc106c0f263d2f7843c3d85519e3}{KNOB\_LAST}}; i++)}
+\DoxyCodeLine{414         \{}
+\DoxyCodeLine{415             \mbox{\hyperlink{classaurora_1_1_hardware_abd2012aeab93c8be8ca24c769b54bc86}{controls}}[i].Process();}
+\DoxyCodeLine{416         \}}
+\DoxyCodeLine{417 }
+\DoxyCodeLine{418         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}; i++)}
+\DoxyCodeLine{419         \{}
+\DoxyCodeLine{420             \mbox{\hyperlink{classaurora_1_1_hardware_acf2848fefd836794f85a1f7c5df8d0da}{cv}}[i].Process();}
+\DoxyCodeLine{421         \}}
+\DoxyCodeLine{422     \}}
+\DoxyCodeLine{426     \textcolor{keyword}{inline} \textcolor{keywordtype}{float} \mbox{\hyperlink{classaurora_1_1_hardware_a2801f3cc7c7f8aac1e6214100cab1bca}{GetKnobValue}}(\textcolor{keywordtype}{int} ctrl)\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classaurora_1_1_hardware_abd2012aeab93c8be8ca24c769b54bc86}{controls}}[ctrl].Value(); \}}
+\DoxyCodeLine{427 }
+\DoxyCodeLine{433     \textcolor{keyword}{inline} \textcolor{keyword}{const} daisy::Switch \&\mbox{\hyperlink{classaurora_1_1_hardware_a6282db62b4e951cfdd69bfe19af7e695}{GetButton}}(\textcolor{keywordtype}{int} idx)\textcolor{keyword}{ const}}
+\DoxyCodeLine{434 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{435         \textcolor{keywordflow}{return} \mbox{\hyperlink{classaurora_1_1_hardware_a079847333f7bda3f804b895443b37abd}{switches}}[idx];}
+\DoxyCodeLine{436     \}}
+\DoxyCodeLine{437 }
+\DoxyCodeLine{443     \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classaurora_1_1_hardware_a937329e3337528e668730e7225615479}{GetGateTrig}}(\textcolor{keywordtype}{int} idx) \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classaurora_1_1_hardware_af1e9933e57af6e2cce0bef976b599a7f}{gates}}[idx].Trig(); \}}
+\DoxyCodeLine{444 }
+\DoxyCodeLine{448     \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classaurora_1_1_hardware_ab409d56d96bbda7a63828fb390a249f0}{GetGateState}}(\textcolor{keywordtype}{int} idx) \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classaurora_1_1_hardware_af1e9933e57af6e2cce0bef976b599a7f}{gates}}[idx].State(); \}}
+\DoxyCodeLine{449 }
+\DoxyCodeLine{451     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a1409ef9c06403f3793537b8dce62af56}{UpdateHidRates}}()}
+\DoxyCodeLine{452     \{}
+\DoxyCodeLine{453         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}; i++)}
+\DoxyCodeLine{454         \{}
+\DoxyCodeLine{455             \mbox{\hyperlink{classaurora_1_1_hardware_acf2848fefd836794f85a1f7c5df8d0da}{cv}}[i].SetSampleRate(\mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{456         \}}
+\DoxyCodeLine{457         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa3fb7dc106c0f263d2f7843c3d85519e3}{KNOB\_LAST}}; i++)}
+\DoxyCodeLine{458         \{}
+\DoxyCodeLine{459             \mbox{\hyperlink{classaurora_1_1_hardware_abd2012aeab93c8be8ca24c769b54bc86}{controls}}[i].SetSampleRate(\mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{460         \}}
+\DoxyCodeLine{461         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a77fb243b24a94ebedcf2251056027b64}{SW\_LAST}}; i++)}
+\DoxyCodeLine{462         \{}
+\DoxyCodeLine{463             \mbox{\hyperlink{classaurora_1_1_hardware_a079847333f7bda3f804b895443b37abd}{switches}}[i].SetUpdateRate(\mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{464         \}}
+\DoxyCodeLine{465     \}}
+\DoxyCodeLine{466 }
+\DoxyCodeLine{468     \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a7d036bded4a2cc66b4ce3976f7b7b408}{PrepareMedia}}(}
+\DoxyCodeLine{469         daisy::USBHostHandle::ConnectCallback     connect\_cb      = \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{470         daisy::USBHostHandle::DisconnectCallback  disconnect\_cb   = \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{471         daisy::USBHostHandle::ClassActiveCallback class\_active\_cb = \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{472         daisy::USBHostHandle::ErrorCallback       error\_cb        = \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{473         \textcolor{keywordtype}{void}                                     *userdata        = \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{474     \{}
+\DoxyCodeLine{476         daisy::USBHostHandle::Config usbcfg;}
+\DoxyCodeLine{477         usbcfg.connect\_callback      = connect\_cb;}
+\DoxyCodeLine{478         usbcfg.disconnect\_callback   = disconnect\_cb;}
+\DoxyCodeLine{479         usbcfg.class\_active\_callback = class\_active\_cb;}
+\DoxyCodeLine{480         usbcfg.error\_callback        = error\_cb;}
+\DoxyCodeLine{481         usbcfg.userdata              = userdata;}
+\DoxyCodeLine{482         \mbox{\hyperlink{namespaceaurora_add63f29f2efd87c1754e7add264350e8}{usb}}.Init(usbcfg);}
+\DoxyCodeLine{483 }
+\DoxyCodeLine{485         daisy::FatFSInterface::Config fsi\_cfg;}
+\DoxyCodeLine{486         fsi\_cfg.media = daisy::FatFSInterface::Config::MEDIA\_USB;}
+\DoxyCodeLine{487         \mbox{\hyperlink{namespaceaurora_a300b1377a387f60ff447c08d7a747877}{fatfs\_interface}}.Init(fsi\_cfg);}
+\DoxyCodeLine{488         f\_mount(\&\mbox{\hyperlink{namespaceaurora_a300b1377a387f60ff447c08d7a747877}{fatfs\_interface}}.GetUSBFileSystem(),}
+\DoxyCodeLine{489                 \mbox{\hyperlink{namespaceaurora_a300b1377a387f60ff447c08d7a747877}{fatfs\_interface}}.GetUSBPath(),}
+\DoxyCodeLine{490                 0);}
+\DoxyCodeLine{491     \}}
+\DoxyCodeLine{492 }
+\DoxyCodeLine{496     \textcolor{keyword}{inline} \textcolor{keywordtype}{float} \mbox{\hyperlink{classaurora_1_1_hardware_ad7f6526ef78ee6583d74db5e25c9f5d4}{GetWarpVoct}}()}
+\DoxyCodeLine{497     \{}
+\DoxyCodeLine{498         \textcolor{keywordflow}{return} voct\_cal.ProcessInput(\mbox{\hyperlink{classaurora_1_1_hardware_acf2848fefd836794f85a1f7c5df8d0da}{cv}}[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba53812239f728e42ebeffcdcb9c076345}{CV\_WARP}}].Value());}
+\DoxyCodeLine{499     \}}
+\DoxyCodeLine{500 }
+\DoxyCodeLine{507     \textcolor{keyword}{inline} \textcolor{keywordtype}{float} \mbox{\hyperlink{classaurora_1_1_hardware_aa51dba9b46e67b772d5209709d3f7ff1}{GetCvValue}}(\textcolor{keywordtype}{int} cv\_idx)}
+\DoxyCodeLine{508     \{}
+\DoxyCodeLine{509         \textcolor{keywordflow}{if}(cv\_idx != \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba53812239f728e42ebeffcdcb9c076345}{CV\_WARP}})}
+\DoxyCodeLine{510             \textcolor{keywordflow}{return} \mbox{\hyperlink{classaurora_1_1_hardware_acf2848fefd836794f85a1f7c5df8d0da}{cv}}[cv\_idx].Value() -\/ cv\_offsets\_[cv\_idx];}
+\DoxyCodeLine{511         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{512             \textcolor{keywordflow}{return} \mbox{\hyperlink{classaurora_1_1_hardware_acf2848fefd836794f85a1f7c5df8d0da}{cv}}[cv\_idx].Value();}
+\DoxyCodeLine{513     \}}
+\DoxyCodeLine{514 }
+\DoxyCodeLine{516     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a47068b9d6ae740bcdfeb0bc96ecbb472}{CalibrateV1}}(\textcolor{keywordtype}{float} v1) \{ warp\_v1\_ = v1; \}}
+\DoxyCodeLine{517 }
+\DoxyCodeLine{521     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_aef0beb521b2108ab3bfed942e9f90d66}{CalibrateV3}}(\textcolor{keywordtype}{float} v3)}
+\DoxyCodeLine{522     \{}
+\DoxyCodeLine{523         warp\_v3\_ = v3;}
+\DoxyCodeLine{524         voct\_cal.Record(warp\_v1\_, warp\_v3\_);}
+\DoxyCodeLine{525         cal\_save\_flag\_ = \textcolor{keyword}{true};}
+\DoxyCodeLine{526     \}}
+\DoxyCodeLine{527 }
+\DoxyCodeLine{531     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_aa1ed24974dcc71d2bb3db062233fb409}{SetWarpCalData}}(\textcolor{keywordtype}{float} scale, \textcolor{keywordtype}{float} offset)}
+\DoxyCodeLine{532     \{}
+\DoxyCodeLine{533         voct\_cal.SetData(scale, offset);}
+\DoxyCodeLine{534     \}}
+\DoxyCodeLine{535 }
+\DoxyCodeLine{539     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a522f94d085e33442b847ac2b9d54d3c8}{GetWarpCalData}}(\textcolor{keywordtype}{float} \&scale, \textcolor{keywordtype}{float} \&offset)}
+\DoxyCodeLine{540     \{}
+\DoxyCodeLine{541         voct\_cal.GetData(scale, offset);}
+\DoxyCodeLine{542     \}}
+\DoxyCodeLine{543 }
+\DoxyCodeLine{545     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_adc9005998152e230aaca663d100f5714}{SetCvOffsetData}}(\textcolor{keywordtype}{float} *data)}
+\DoxyCodeLine{546     \{}
+\DoxyCodeLine{547         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}; i++)}
+\DoxyCodeLine{548         \{}
+\DoxyCodeLine{549             cv\_offsets\_[i] = data[i];}
+\DoxyCodeLine{550         \}}
+\DoxyCodeLine{551     \}}
+\DoxyCodeLine{552 }
+\DoxyCodeLine{554     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_aae4ac8a07f1e0c07477c7fc9902347cf}{GetCvOffsetData}}(\textcolor{keywordtype}{float} *data)}
+\DoxyCodeLine{555     \{}
+\DoxyCodeLine{556         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}; i++)}
+\DoxyCodeLine{557         \{}
+\DoxyCodeLine{558             data[i] = cv\_offsets\_[i];}
+\DoxyCodeLine{559         \}}
+\DoxyCodeLine{560     \}}
+\DoxyCodeLine{561 }
+\DoxyCodeLine{563     \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classaurora_1_1_hardware_a294ba6486991b337181a83ec1a961eb7}{ReadyToSaveCal}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} cal\_save\_flag\_; \}}
+\DoxyCodeLine{564 }
+\DoxyCodeLine{566     \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classaurora_1_1_hardware_a9704429136666cd1ef67b6385d20bf63}{ClearSaveCalFlag}}() \{ cal\_save\_flag\_ = \textcolor{keyword}{false}; \}}
+\DoxyCodeLine{567 }
+\DoxyCodeLine{569     daisy::AnalogControl \mbox{\hyperlink{classaurora_1_1_hardware_acf2848fefd836794f85a1f7c5df8d0da}{cv}}[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}];}
+\DoxyCodeLine{570 }
+\DoxyCodeLine{572     daisy::Switch \mbox{\hyperlink{classaurora_1_1_hardware_a079847333f7bda3f804b895443b37abd}{switches}}[\mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a77fb243b24a94ebedcf2251056027b64}{SW\_LAST}}];}
+\DoxyCodeLine{573 }
+\DoxyCodeLine{575     daisy::GateIn \mbox{\hyperlink{classaurora_1_1_hardware_af1e9933e57af6e2cce0bef976b599a7f}{gates}}[\mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3ea8a43310078f25453bf3286dfcac4a2f5}{GATE\_LAST}}];}
+\DoxyCodeLine{576 }
+\DoxyCodeLine{578     daisy::AnalogControl \mbox{\hyperlink{classaurora_1_1_hardware_abd2012aeab93c8be8ca24c769b54bc86}{controls}}[\mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa3fb7dc106c0f263d2f7843c3d85519e3}{KNOB\_LAST}}];}
+\DoxyCodeLine{579 }
+\DoxyCodeLine{581     daisy::DaisySeed \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}};}
+\DoxyCodeLine{582 }
+\DoxyCodeLine{583   \textcolor{keyword}{private}:}
+\DoxyCodeLine{589     \textcolor{keyword}{static} \textcolor{keyword}{constexpr} uint32\_t kCalibrationDataOffset = 4096;}
+\DoxyCodeLine{590 }
+\DoxyCodeLine{592     \textcolor{keyword}{struct }LedIdx}
+\DoxyCodeLine{593     \{}
+\DoxyCodeLine{594         int8\_t r;}
+\DoxyCodeLine{595         int8\_t g;}
+\DoxyCodeLine{596         int8\_t b;}
+\DoxyCodeLine{597     \};}
+\DoxyCodeLine{598 }
+\DoxyCodeLine{600     \textcolor{keyword}{const} LedIdx LedMap[\mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaa843f019f3d74106e40f62494ddf0c65}{LED\_LAST}}] = \{\{0, 1, 2\},}
+\DoxyCodeLine{601                                      \{3, 4, 5\},}
+\DoxyCodeLine{602                                      \{6, 7, 8\},}
+\DoxyCodeLine{603                                      \{9, 10, 11\},}
+\DoxyCodeLine{604                                      \{16, 17, 18\},}
+\DoxyCodeLine{605                                      \{12, 13, 14\},}
+\DoxyCodeLine{606                                      \{22, 23, 24\},}
+\DoxyCodeLine{607                                      \{28, 29, 30\},}
+\DoxyCodeLine{608                                      \{-\/1, 20, 21\},}
+\DoxyCodeLine{609                                      \{-\/1, 26, 27\},}
+\DoxyCodeLine{610                                      \{-\/1, 19, 25\}\};}
+\DoxyCodeLine{611 }
+\DoxyCodeLine{613     \textcolor{keyword}{enum class} HardwareVersion}
+\DoxyCodeLine{614     \{}
+\DoxyCodeLine{615         REV3, }
+\DoxyCodeLine{616         REV4, }
+\DoxyCodeLine{617     \};}
+\DoxyCodeLine{618 }
+\DoxyCodeLine{619 }
+\DoxyCodeLine{621     daisy::LedDriverPca9685<2, true> led\_driver\_;}
+\DoxyCodeLine{622 }
+\DoxyCodeLine{624     daisy::AudioHandle::AudioCallback current\_cb\_;}
+\DoxyCodeLine{625 }
+\DoxyCodeLine{626     daisy::TimerHandle tim5\_handle;}
+\DoxyCodeLine{627     daisy::I2CHandle   i2c;}
+\DoxyCodeLine{628     daisy::Pcm3060     codec;}
+\DoxyCodeLine{629 }
+\DoxyCodeLine{630     HardwareVersion hw\_version;}
+\DoxyCodeLine{631 }
+\DoxyCodeLine{633     \textcolor{keywordtype}{float}                  warp\_v1\_, warp\_v3\_;}
+\DoxyCodeLine{634     daisy::VoctCalibration voct\_cal;}
+\DoxyCodeLine{635     \textcolor{keywordtype}{float}                  cv\_offsets\_[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}];}
+\DoxyCodeLine{636 }
+\DoxyCodeLine{637     \textcolor{keywordtype}{bool} cal\_save\_flag\_;}
+\DoxyCodeLine{638 }
+\DoxyCodeLine{639 }
+\DoxyCodeLine{640     \textcolor{keywordtype}{void} ConfigureAudio()}
+\DoxyCodeLine{641     \{}
+\DoxyCodeLine{643         \textcolor{keywordflow}{if}(hw\_version == HardwareVersion::REV3)}
+\DoxyCodeLine{644         \{}
+\DoxyCodeLine{645             daisy::I2CHandle::Config codec\_i2c\_config;}
+\DoxyCodeLine{646             codec\_i2c\_config.periph}
+\DoxyCodeLine{647                 = daisy::I2CHandle::Config::Peripheral::I2C\_1;}
+\DoxyCodeLine{648             codec\_i2c\_config.pin\_config = \{\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(11), \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(12)\};}
+\DoxyCodeLine{649             codec\_i2c\_config.speed}
+\DoxyCodeLine{650                 = daisy::I2CHandle::Config::Speed::I2C\_400KHZ;}
+\DoxyCodeLine{651             codec\_i2c\_config.mode = daisy::I2CHandle::Config::Mode::I2C\_MASTER;}
+\DoxyCodeLine{652 }
+\DoxyCodeLine{653             i2c.Init(codec\_i2c\_config);}
+\DoxyCodeLine{654             codec.Init(i2c);}
+\DoxyCodeLine{655 }
+\DoxyCodeLine{656             daisy::SaiHandle::Config sai\_cfg;}
+\DoxyCodeLine{657             sai\_cfg.periph    = daisy::SaiHandle::Config::Peripheral::SAI\_2;}
+\DoxyCodeLine{658             sai\_cfg.sr        = daisy::SaiHandle::Config::SampleRate::SAI\_48KHZ;}
+\DoxyCodeLine{659             sai\_cfg.bit\_depth = daisy::SaiHandle::Config::BitDepth::SAI\_24BIT;}
+\DoxyCodeLine{660             sai\_cfg.a\_sync    = daisy::SaiHandle::Config::Sync::SLAVE;}
+\DoxyCodeLine{661             sai\_cfg.b\_sync    = daisy::SaiHandle::Config::Sync::MASTER;}
+\DoxyCodeLine{662             sai\_cfg.a\_dir     = daisy::SaiHandle::Config::Direction::RECEIVE;}
+\DoxyCodeLine{663             sai\_cfg.b\_dir     = daisy::SaiHandle::Config::Direction::TRANSMIT;}
+\DoxyCodeLine{664             sai\_cfg.pin\_config.fs   = \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(27);}
+\DoxyCodeLine{665             sai\_cfg.pin\_config.mclk = \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(24);}
+\DoxyCodeLine{666             sai\_cfg.pin\_config.sck  = \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(28);}
+\DoxyCodeLine{667             sai\_cfg.pin\_config.sa   = \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(26);}
+\DoxyCodeLine{668             sai\_cfg.pin\_config.sb   = \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(25);}
+\DoxyCodeLine{669             \textcolor{comment}{// Then Initialize}}
+\DoxyCodeLine{670             daisy::SaiHandle sai\_2\_handle;}
+\DoxyCodeLine{671             sai\_2\_handle.Init(sai\_cfg);}
+\DoxyCodeLine{672             daisy::AudioHandle::Config audio\_cfg;}
+\DoxyCodeLine{673             audio\_cfg.blocksize = 48;}
+\DoxyCodeLine{674             audio\_cfg.samplerate}
+\DoxyCodeLine{675                 = daisy::SaiHandle::Config::SampleRate::SAI\_48KHZ;}
+\DoxyCodeLine{676             audio\_cfg.postgain = 1.0f;}
+\DoxyCodeLine{677             \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.audio\_handle.Init(audio\_cfg, sai\_2\_handle);}
+\DoxyCodeLine{678         \}}
+\DoxyCodeLine{679         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{680         \{}
+\DoxyCodeLine{682             daisy::GPIO deemp;}
+\DoxyCodeLine{683             daisy::Pin  deemp\_pin(daisy::PORTB, 11);}
+\DoxyCodeLine{684             deemp.Init(deemp\_pin, daisy::GPIO::Mode::OUTPUT);}
+\DoxyCodeLine{685             deemp.Write(0);}
+\DoxyCodeLine{686         \}}
+\DoxyCodeLine{687     \}}
+\DoxyCodeLine{688 }
+\DoxyCodeLine{689     \textcolor{comment}{// pots,switches, gates, CV}}
+\DoxyCodeLine{690     \textcolor{keywordtype}{void} ConfigureControls()}
+\DoxyCodeLine{691     \{}
+\DoxyCodeLine{692         \textcolor{keywordflow}{if}(hw\_version == HardwareVersion::REV3)}
+\DoxyCodeLine{693         \{}
+\DoxyCodeLine{694             \textcolor{comment}{// ===== CV and Pots (adc) =====}}
+\DoxyCodeLine{695             daisy::AdcChannelConfig cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + 1];}
+\DoxyCodeLine{696 }
+\DoxyCodeLine{697             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}; i++)}
+\DoxyCodeLine{698             \{}
+\DoxyCodeLine{699                 cfg[i].InitSingle(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(17 + i));}
+\DoxyCodeLine{700             \}}
+\DoxyCodeLine{701             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}].InitMux(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(16),}
+\DoxyCodeLine{702                                  6,}
+\DoxyCodeLine{703                                  \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(7),}
+\DoxyCodeLine{704                                  \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(8),}
+\DoxyCodeLine{705                                  \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(9));}
+\DoxyCodeLine{706             \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.adc.Init(cfg, \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + 1);}
+\DoxyCodeLine{707 }
+\DoxyCodeLine{708             \textcolor{comment}{// init cv as bipolar analog controls}}
+\DoxyCodeLine{709             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i = 0; i < \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}; i++)}
+\DoxyCodeLine{710             \{}
+\DoxyCodeLine{711                 \mbox{\hyperlink{classaurora_1_1_hardware_acf2848fefd836794f85a1f7c5df8d0da}{cv}}[i].InitBipolarCv(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.adc.GetPtr(i), \mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{712             \}}
+\DoxyCodeLine{713 }
+\DoxyCodeLine{714             \textcolor{comment}{// init pots as analog controls}}
+\DoxyCodeLine{715             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i = 0; i < \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa3fb7dc106c0f263d2f7843c3d85519e3}{KNOB\_LAST}}; i++)}
+\DoxyCodeLine{716             \{}
+\DoxyCodeLine{717                 \mbox{\hyperlink{classaurora_1_1_hardware_abd2012aeab93c8be8ca24c769b54bc86}{controls}}[i].Init(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.adc.GetMuxPtr(\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}, i),}
+\DoxyCodeLine{718                                  \mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{719             \}}
+\DoxyCodeLine{720 }
+\DoxyCodeLine{721             \textcolor{comment}{// ===== gates =====}}
+\DoxyCodeLine{722             dsy\_gpio\_pin pin;}
+\DoxyCodeLine{723             pin = \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(23);}
+\DoxyCodeLine{724             \mbox{\hyperlink{classaurora_1_1_hardware_af1e9933e57af6e2cce0bef976b599a7f}{gates}}[\mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3eaa74bc67b4d25cfae7d624cc022afda9e}{GATE\_FREEZE}}].Init(\&pin);}
+\DoxyCodeLine{725         \}}
+\DoxyCodeLine{726         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{727         \{}
+\DoxyCodeLine{729             daisy::AdcChannelConfig cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa3fb7dc106c0f263d2f7843c3d85519e3}{KNOB\_LAST}}];}
+\DoxyCodeLine{731             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa7355bc47484ac9009e9ae5ea4519711c}{KNOB\_TIME}}].InitSingle(daisy::seed::A0);}
+\DoxyCodeLine{732             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa5e99ba973f08c9c45bc352aaa8d9315b}{KNOB\_REFLECT}}].InitSingle(daisy::seed::A1);}
+\DoxyCodeLine{733             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba14a9a281ea2e5fb0f4643ea71ac8f4fc}{CV\_ATMOSPHERE}}].InitSingle(daisy::seed::A2);}
+\DoxyCodeLine{734             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba99ad46bf89ab0808918343824a12003d}{CV\_TIME}}].InitSingle(daisy::seed::A3);}
+\DoxyCodeLine{735             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba20130ae1b93454a79fc03aeebe1c3459}{CV\_MIX}}].InitSingle(daisy::seed::A4);}
+\DoxyCodeLine{736             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba53094bc7122e2e060a025919c0b4c006}{CV\_REFLECT}}].InitSingle(daisy::seed::A5);}
+\DoxyCodeLine{737             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba38a54728d2de8f46f2a0ec1e9b93d922}{CV\_BLUR}}].InitSingle(daisy::seed::A6);}
+\DoxyCodeLine{738             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba53812239f728e42ebeffcdcb9c076345}{CV\_WARP}}].InitSingle(daisy::seed::A7);}
+\DoxyCodeLine{739             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa4030ec072fbbcc5198927f787fc381ae}{KNOB\_MIX}}].InitSingle(daisy::seed::A8);}
+\DoxyCodeLine{740             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa132e93ba27b993bd7bc17d340be96928}{KNOB\_WARP}}].InitSingle(daisy::seed::A9);}
+\DoxyCodeLine{741             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa26e02f7c718ee0ba934d0fc005355179}{KNOB\_ATMOSPHERE}}].InitSingle(daisy::seed::A10);}
+\DoxyCodeLine{742             cfg[\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa309901733cbf3f6fd847f847b88ff47d}{KNOB\_BLUR}}].InitSingle(daisy::seed::A11);}
+\DoxyCodeLine{743             \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.adc.Init(cfg, \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa3fb7dc106c0f263d2f7843c3d85519e3}{KNOB\_LAST}});}
+\DoxyCodeLine{744 }
+\DoxyCodeLine{745             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i = 0; i < \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}}; i++)}
+\DoxyCodeLine{746             \{}
+\DoxyCodeLine{747                 \mbox{\hyperlink{classaurora_1_1_hardware_acf2848fefd836794f85a1f7c5df8d0da}{cv}}[i].InitBipolarCv(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.adc.GetPtr(i), \mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{748             \}}
+\DoxyCodeLine{749             \textcolor{comment}{// init pots as analog controls with offset to last CV for ptr}}
+\DoxyCodeLine{750             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i = 0; i < \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa3fb7dc106c0f263d2f7843c3d85519e3}{KNOB\_LAST}}; i++)}
+\DoxyCodeLine{751             \{}
+\DoxyCodeLine{752                 \mbox{\hyperlink{classaurora_1_1_hardware_abd2012aeab93c8be8ca24c769b54bc86}{controls}}[i].Init(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.adc.GetPtr(\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{CV\_LAST}} + i),}
+\DoxyCodeLine{753                                  \mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{754             \}}
+\DoxyCodeLine{755             dsy\_gpio\_pin freeze\_pin = daisy::seed::D26;}
+\DoxyCodeLine{756             \mbox{\hyperlink{classaurora_1_1_hardware_af1e9933e57af6e2cce0bef976b599a7f}{gates}}[\mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3eaa74bc67b4d25cfae7d624cc022afda9e}{GATE\_FREEZE}}].Init(\&freeze\_pin);}
+\DoxyCodeLine{757         \}}
+\DoxyCodeLine{758         \textcolor{comment}{// And anything generic to both versions}}
+\DoxyCodeLine{759         \textcolor{comment}{// ===== switches =====}}
+\DoxyCodeLine{760         \mbox{\hyperlink{classaurora_1_1_hardware_a079847333f7bda3f804b895443b37abd}{switches}}[\mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a725a2822002e2209fc0916f2173d3271}{SW\_FREEZE}}].Init(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(1), \mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{761         \mbox{\hyperlink{classaurora_1_1_hardware_a079847333f7bda3f804b895443b37abd}{switches}}[\mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a45ae311227c962283f6c55b0b865b8c2}{SW\_REVERSE}}].Init(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(10), \mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{762         \mbox{\hyperlink{classaurora_1_1_hardware_a079847333f7bda3f804b895443b37abd}{switches}}[\mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a6544313cfea960b855983f2c347ea96a}{SW\_SHIFT}}].Init(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(13), \mbox{\hyperlink{classaurora_1_1_hardware_a4bc3a4c3aca12f7c2a2508de79310739}{AudioCallbackRate}}());}
+\DoxyCodeLine{763 }
+\DoxyCodeLine{764         dsy\_gpio\_pin revpin = \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(14);}
+\DoxyCodeLine{765         \mbox{\hyperlink{classaurora_1_1_hardware_af1e9933e57af6e2cce0bef976b599a7f}{gates}}[\mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3ea57f639eba139528e9d5976c480688885}{GATE\_REVERSE}}].Init(\&revpin);}
+\DoxyCodeLine{766     \}}
+\DoxyCodeLine{767 }
+\DoxyCodeLine{768     \textcolor{keywordtype}{void} ConfigureLeds()}
+\DoxyCodeLine{769     \{}
+\DoxyCodeLine{770         \textcolor{comment}{// reinit i2c at 1MHz}}
+\DoxyCodeLine{771         daisy::I2CHandle::Config codec\_i2c\_config;}
+\DoxyCodeLine{772         codec\_i2c\_config.periph = daisy::I2CHandle::Config::Peripheral::I2C\_1;}
+\DoxyCodeLine{773         codec\_i2c\_config.pin\_config = \{\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(11), \mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.GetPin(12)\};}
+\DoxyCodeLine{774         codec\_i2c\_config.speed      = daisy::I2CHandle::Config::Speed::I2C\_1MHZ;}
+\DoxyCodeLine{775         codec\_i2c\_config.mode = daisy::I2CHandle::Config::Mode::I2C\_MASTER;}
+\DoxyCodeLine{776         i2c.Init(codec\_i2c\_config);}
+\DoxyCodeLine{777 }
+\DoxyCodeLine{778         \textcolor{comment}{// init driver}}
+\DoxyCodeLine{779         led\_driver\_.Init(i2c, \{0x00, 0x01\}, led\_dma\_buffer\_a, led\_dma\_buffer\_b);}
+\DoxyCodeLine{780 }
+\DoxyCodeLine{781         \mbox{\hyperlink{classaurora_1_1_hardware_a07069982db84a01fc8b9ecd11ab1cc6d}{ClearLeds}}();}
+\DoxyCodeLine{782         \mbox{\hyperlink{classaurora_1_1_hardware_ab8cb3c31427a2edc37038e78bbf27ce0}{WriteLeds}}();}
+\DoxyCodeLine{783     \}}
+\DoxyCodeLine{784 }
+\DoxyCodeLine{785     HardwareVersion GetBoardRevision()}
+\DoxyCodeLine{786     \{}
+\DoxyCodeLine{787         daisy::GPIO version\_gpio;}
+\DoxyCodeLine{788         version\_gpio.Init(daisy::seed::D2,}
+\DoxyCodeLine{789                           daisy::GPIO::Mode::INPUT,}
+\DoxyCodeLine{790                           daisy::GPIO::Pull::PULLUP);}
+\DoxyCodeLine{792         \textcolor{keyword}{auto} pinstate = version\_gpio.Read();}
+\DoxyCodeLine{793         version\_gpio.DeInit();}
+\DoxyCodeLine{794         \textcolor{keywordflow}{if}(pinstate)}
+\DoxyCodeLine{795             \textcolor{keywordflow}{return} HardwareVersion::REV3;}
+\DoxyCodeLine{796         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{797             \textcolor{keywordflow}{return} HardwareVersion::REV4;}
+\DoxyCodeLine{798     \}}
+\DoxyCodeLine{799 }
+\DoxyCodeLine{801     \textcolor{keywordtype}{void} LoadCalibrationData()}
+\DoxyCodeLine{802     \{}
+\DoxyCodeLine{803         daisy::PersistentStorage<CalibrationData> cal\_storage(\mbox{\hyperlink{classaurora_1_1_hardware_abeeed8b2cb38b89c7d61a8d3819bd828}{seed}}.qspi);}
+\DoxyCodeLine{804         CalibrationData                           default\_cal;}
+\DoxyCodeLine{805         cal\_storage.Init(default\_cal, kCalibrationDataOffset);}
+\DoxyCodeLine{806         \textcolor{keyword}{auto} \&cal\_data = cal\_storage.GetSettings();}
+\DoxyCodeLine{807         \mbox{\hyperlink{classaurora_1_1_hardware_aa1ed24974dcc71d2bb3db062233fb409}{SetWarpCalData}}(cal\_data.warp\_scale, cal\_data.warp\_offset);}
+\DoxyCodeLine{808         \mbox{\hyperlink{classaurora_1_1_hardware_adc9005998152e230aaca663d100f5714}{SetCvOffsetData}}(cal\_data.cv\_offset);}
+\DoxyCodeLine{809     \}}
+\DoxyCodeLine{810 \};}
+\DoxyCodeLine{811 }
+\DoxyCodeLine{812 \} \textcolor{comment}{// namespace aurora}}
+\DoxyCodeLine{813 }
+\DoxyCodeLine{814 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
