@@ -1275,7 +1275,7 @@ HTML_EXTRA_STYLESHEET  = docs/extra/doxygen-awesome.css \
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES       = docs/images/QB_Logo_Small_White-55x55.png \
+HTML_EXTRA_FILES       = docs/images/QB_Logo_Small-55x55.png \
                          docs/extra/doxygen-awesome-darkmode-toggle.js
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. Doxygen
