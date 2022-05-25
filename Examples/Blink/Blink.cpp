@@ -25,7 +25,7 @@ int main(void)
 	while (1)
 	{
 		/** Set the State of the LED */
-		hw.SetLed(Hardware::LED_FREEZE, 0.f, 0.f, led_state);
+		hw.SetLed(LED_FREEZE, 0.f, 0.f, led_state);
 
 		/** Toggle the state */
 		if (led_state)
@@ -34,7 +34,7 @@ int main(void)
 			led_state = true;
 
 		/** Write all LED states to the hardware */
-		hw.UpdateDriverLeds();
+		hw.WriteLeds();
 
 		/** Delay 500ms */
 		System::Delay(500);

@@ -33,27 +33,3 @@ jobs:
         message: 'Automated: Committing Dist folder' 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  converttopdf:
-    name: Markdown to PDF and HTML
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Copy temp readme
-        run: ./ci/copy_readme.sh
-      - uses: BaileyJM02/markdown-to-pdf@v1
-        with:
-          input_dir: temp_docs
-          output_dir: doc
-          # images_dir: resources
-      - uses: actions/upload-artifact@v1
-        with:
-          name: temp_docs
-          path: doc
-      - name: Remove temp readme
-        run: ./ci/rm_readme.sh
-      - name: Deploy Dist
-        uses: EndBug/add-and-commit@v4
-        with:
-          message: 'Automated: Committing doc folder' 
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

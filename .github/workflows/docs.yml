@@ -1,0 +1,33 @@
+name: Documentation
+# Generates and Deploys doxygen docs
+on:
+  push:
+    branches: [ main ] # only gen docs for pushes to main
+    paths:
+    - 'include'
+    - 'docs'
+jobs:
+  # creates a dist/documentation/* folder containing the html documentation
+  deploy-local: 
+    permissions:
+      contents: write
+      checks: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: mattnotmitt/doxygen-action@v1
+      with:
+        doxyfile-path: docs/Doxyfile
+    - uses: EndBug/add-and-commit@v9
+      with:
+        message: 'Automated: commiting doxygen reference'
+        add: dist/documentation
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # TODO uncomment when public, with gh-page setup.
+    # - name: deploy web
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: ./dist/documentation/html
