@@ -427,7 +427,7 @@ class Hardware
 
     /** @brief returns a reference to a given momentary switch 
      *         Example Usage:
-     *         bool state = hw.GetButton(Hardware::SW_FREEZE).Pressed();
+     *         bool state = hw.GetButton(SW_FREEZE).Pressed();
      *  @param idx one of the Switches enum values
      */
     inline const daisy::Switch &GetButton(int idx) const
