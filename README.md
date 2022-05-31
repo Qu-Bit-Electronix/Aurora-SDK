@@ -49,7 +49,7 @@ Here, we can see a few things that will happen in every program:
 
 We always have a `Hardware` object, that's our connection to the module itself. Typically, we'll name it `hw` to keep it nice and short.
 
-We can use that to do things, for example, in this example, we change the state of an LED:
+We can use that to do things with the Hardware. For example, in this example, we change the state of an LED:
 
 ```cpp
 hw.SetLed(LED_FREEZE, 0.f, 0.f, led_state);
@@ -288,7 +288,7 @@ Each example is a single C++ file, and a `Makefile`.
 
 If you're using VS Code, you can build all examples by running the build task by clicking: `Terminal->Run Build Task...`. The shortcut for this is `CTRL+SHIFT+B` on Windows, or `CMD+SHIFT+B` on Mac OS.
 
-Alternatively, using the same task menu as above, you can build individual examples, for example, the task, `Build Example - Blink` will build the Blink example.
+Alternatively, using the same task menu as above, you can build individual examples. For example, the task, `Build Example - Blink` will build the Blink example.
 
 This is the equivalent of running the following command in a terminal from the specific Example's folder:
 
