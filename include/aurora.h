@@ -690,6 +690,8 @@ class Hardware
             daisy::Pin  deemp_pin(daisy::PORTB, 11);
             deemp.Init(deemp_pin, daisy::GPIO::Mode::OUTPUT);
             deemp.Write(0);
+            /** Adjust audio output to match input signal level */
+            seed.audio_handle.SetOutputCompensation(0.8785f);
         }
     }
 
