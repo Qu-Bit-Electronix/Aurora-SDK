@@ -250,9 +250,6 @@ class Hardware
         tim5_handle.Start();
     }
 
-
-
-
     /** @brief Updates the samplerate to one of the allowed target samplerates.
      *         This function stops the audio completely, and will cause clicks.
      * 
