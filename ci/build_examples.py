@@ -19,6 +19,7 @@ filter_dirs = ["libDaisy",
                "stmlib",
                "libdaisy",
                "DaisyToolchain",
+               "libs",
                "MyProjects"]
 
 dirs_to_search = list(

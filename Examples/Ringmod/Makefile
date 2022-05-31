@@ -1,11 +1,11 @@
 # Project Name
-TARGET = Blink
+TARGET = Ringmod
 
 # Build Project for Daisy Bootloader
 APP_TYPE = BOOT_SRAM
 
 # Sources
-CPP_SOURCES = Blink.cpp
+CPP_SOURCES = Ringmod.cpp
 
 # Path to the root of the Aurora-SDK
 # When building custom applications outside of this repo

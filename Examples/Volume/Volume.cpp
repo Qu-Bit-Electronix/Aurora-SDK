@@ -2,6 +2,8 @@
  *
  *  Demonstrates reading a knob to adjust the level of audio 
  *  passing through the module.
+ * 
+ *  The Mix knob is used to adjust the volume of the signal.
  */
 #include "aurora.h"
 

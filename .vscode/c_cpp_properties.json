@@ -7,8 +7,8 @@
             "includePath": [
                 "${workspaceFolder}/Examples/**",
                 "${workspaceFolder}/include/**",
-                "${workspaceFolder}/libDaisy//**",
-                "${workspaceFolder}/DaisySP//**"
+                "${workspaceFolder}/libs/libDaisy//**",
+                "${workspaceFolder}/libs/DaisySP//**"
             ],
             "intelliSenseMode": "gcc-x64",
             "cStandard": "c11",
@@ -26,8 +26,8 @@
             "includePath": [
                 "${workspaceFolder}/Examples/**",
                 "${workspaceFolder}/include/**",
-                "${workspaceFolder}/libDaisy//**",
-                "${workspaceFolder}/DaisySP//**"
+                "${workspaceFolder}/libs/libDaisy//**",
+                "${workspaceFolder}/libs/DaisySP//**"
             ],
             "intelliSenseMode": "gcc-x64",
             "cStandard": "c11",

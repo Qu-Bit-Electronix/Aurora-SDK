@@ -195,12 +195,34 @@ class Hardware
         }
     }
 
-    /** @brief delay function; same as System::Delay(), and should not be called 
-     *         from any interrupt callbacks (LowPriorityCallback/AudioCallback).
-     * 
-     *  @param del number of milliseconds to delay
-    */
-    void DelayMs(size_t del) { seed.DelayMs(del); }
+    /** @brief Starts a specified audio callback 
+     *         Data is non-interleaved 
+     *         (i.e. {{L0, L1, ... , LN},{R0, R1, ... , RN}})
+     */
+    void StartAudio(daisy::AudioHandle::AudioCallback cb)
+    {
+        current_cb_ = cb;
+        seed.StartAudio(cb);
+    }
+
+    /** @brief Changes current callback to a new non-interleaved callback */
+    void ChangeAudioCallback(daisy::AudioHandle::AudioCallback cb)
+    {
+        current_cb_ = cb;
+        seed.ChangeAudioCallback(cb);
+    }
+
+    /** @brief Starts a specified Interleaving audio callback */
+    void StartAudio(daisy::AudioHandle::InterleavingAudioCallback cb)
+    {
+        seed.StartAudio(cb);
+    }
+
+    /** @brief Changes current callback to a new interleaved callback */
+    void ChangeAudioCallback(daisy::AudioHandle::InterleavingAudioCallback cb)
+    {
+        seed.ChangeAudioCallback(cb);
+    }
 
     /** This starts up a callback that is on the lowest priority interrupt level
      *  This provides an area for non-background tasks that should interrupt low
@@ -226,36 +248,6 @@ class Hardware
         tim5_handle.SetCallback(cb, data);
         /** Start Audio */
         tim5_handle.Start();
-    }
-
-    /** @brief Starts a specified Interleaving audio callback */
-    void StartAudio(daisy::AudioHandle::InterleavingAudioCallback cb)
-    {
-        seed.StartAudio(cb);
-    }
-
-    /** @brief Starts a specified audio callback 
-     *         Data is non-interleaved 
-     *         (i.e. {{L0, L1, ... , LN},{R0, R1, ... , RN}})
-     */
-    void StartAudio(daisy::AudioHandle::AudioCallback cb)
-    {
-        current_cb_ = cb;
-        seed.StartAudio(cb);
-    }
-
-    /** @brief Changes current callback to a new interleaved callback */
-    void ChangeAudioCallback(daisy::AudioHandle::InterleavingAudioCallback cb)
-    {
-        seed.ChangeAudioCallback(cb);
-    }
-
-
-    /** @brief Changes current callback to a new non-interleaved callback */
-    void ChangeAudioCallback(daisy::AudioHandle::AudioCallback cb)
-    {
-        current_cb_ = cb;
-        seed.ChangeAudioCallback(cb);
     }
 
     /** @brief Updates the samplerate to one of the allowed target samplerates.
@@ -464,7 +456,15 @@ class Hardware
         }
     }
 
-    /** @brief starts the mounting process for USB Drive use if it is present */
+    /** @brief starts the mounting process for USB Drive use if it is present
+     *
+     *  To access files from a USB drive: the connect, class_active, and disconnect
+     *  callbacks can be used to update an external state machine that can be used 
+     *  to trigger interactions with the filesystem.
+     * 
+     *  This process should be done within the main() while loop, and `usb.Process()`
+     *  should be called once per loop.
+     */
     void PrepareMedia(
         daisy::USBHostHandle::ConnectCallback     connect_cb      = nullptr,
         daisy::USBHostHandle::DisconnectCallback  disconnect_cb   = nullptr,
@@ -512,6 +512,13 @@ class Hardware
             return cv[cv_idx].Value();
     }
 
+    /** @brief delay function; same as System::Delay(), and should not be called 
+     *         from any interrupt callbacks (LowPriorityCallback/AudioCallback).
+     * 
+     *  @param del number of milliseconds to delay
+    */
+    void DelayMs(size_t del) { seed.DelayMs(del); }
+
     /** @brief called during a customized calibration UI to record the 1V value */
     inline void CalibrateV1(float v1) { warp_v1_ = v1; }
 
@@ -550,7 +557,7 @@ class Hardware
         }
     }
 
-    /** Fills an array with the offset data currently being used */
+    /** @brief Fills an array with the offset data currently being used */
     inline void GetCvOffsetData(float *data)
     {
         for(int i = 0; i < CV_LAST; i++)
