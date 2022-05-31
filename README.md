@@ -11,7 +11,7 @@ Below we'll cover some basic topics to get started writing your own code to run 
 
 ## Table of Contents
 
-* [Reaing and Running Examples](#reading-and-running-examples)
+* [Reading and Running Examples](#reading-and-running-examples)
   * [Blink](#blink)
   * [Volume](#volume)
   * [Ringmod](#ringmod)
