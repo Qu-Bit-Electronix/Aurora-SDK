@@ -1,11 +1,11 @@
 # Aurora SDK
 
 [![Build All](https://github.com/Qu-Bit-Electronix/Aurora-SDK/actions/workflows/main.yml/badge.svg)](https://github.com/Qu-Bit-Electronix/Aurora-SDK/actions/workflows/main.yml)
-[![Documentation](https://github.com/Qu-Bit-Electronix/Aurora-SDK/actions/workflows/docs.yml/badge.svg)](https://qu-bit-electronix.github.io/Aurora-SDK)
+[![Documentation](https://github.com/Qu-Bit-Electronix/Aurora-SDK/actions/workflows/docs.yml/badge.svg)](https://Qu-Bit-Electronix.github.io/Aurora-SDK)
 
 Everything you need to start writing your own application for the Qu-Bit Aurora Hardware platform!
 
-Check out the [reference documentation](qu-bit-electronix.github.io/Aurora-SDK) for the project.
+Check out the [reference documentation](Qu-Bit-Electronix.github.io/Aurora-SDK) for the project.
 
 Below we'll cover some basic topics to get started writing your own code to run on the Aurora
 
@@ -242,6 +242,8 @@ On Windows, you can install python by downloading the latest from [python.org](h
 **Note**: The windows store version of python will not work.
 
 #### Mac OS
+
+<!-- **TODO**: add real link -->
 
 1. Download the [Daisy Toolchain for Mac OS installer]() from the Qu-Bit website.
 2. Unzip, and Double click, the `install.command` file contained within.
