@@ -36,7 +36,7 @@ void AudioCallback(AudioHandle::InputBuffer in, AudioHandle::OutputBuffer out, s
     float depth = fmap(hw.GetKnobValue(KNOB_BLUR), 0.5, 1.0);
 
     /** Dry/Wet balance */
-    float mix = fmap(hw.GetKnobValue(KNOB_MIX));
+    float mix = hw.GetKnobValue(KNOB_MIX);
 
     for (size_t i = 0; i < size; i++)
     {
@@ -69,6 +69,11 @@ int main(void)
     osc.SetWaveform(Oscillator::WAVE_SIN);
     osc.SetAmp(1.0);
 
+
+	/** Start the audio engine calling the function defined above periodically */
+	hw.StartAudio(AudioCallback);
+
+    /** Infinite Loop */
     while (1)
     {
     }
