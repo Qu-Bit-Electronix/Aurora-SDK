@@ -16,8 +16,8 @@ AURORA_SDK_PATH = ../..
 C_INCLUDES += -I$(AURORA_SDK_PATH)/include/
 
 # Library Locations
-LIBDAISY_DIR = $(AURORA_SDK_PATH)/libDaisy/
-DAISYSP_DIR = $(AURORA_SDK_PATH)/DaisySP/
+LIBDAISY_DIR = $(AURORA_SDK_PATH)/libs/libDaisy/
+DAISYSP_DIR = $(AURORA_SDK_PATH)/libs/DaisySP/
 
 # To DEBUG the project with an ST-Link Probe:
 # 1. Compile the program with the below lines uncommented
