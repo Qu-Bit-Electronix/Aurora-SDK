@@ -1,4 +1,4 @@
-# Aurora SDK
+<img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="3.3" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/11c77c89-b9d3-4cab-a92d-d932dc89e65b/Aurora_SDK_banner_v1.0.png?format=2500w">
 
 [![Build All](https://github.com/Qu-Bit-Electronix/Aurora-SDK/actions/workflows/main.yml/badge.svg)](https://github.com/Qu-Bit-Electronix/Aurora-SDK/actions/workflows/main.yml)
 [![Documentation](https://github.com/Qu-Bit-Electronix/Aurora-SDK/actions/workflows/docs.yml/badge.svg)](https://Qu-Bit-Electronix.github.io/Aurora-SDK)
