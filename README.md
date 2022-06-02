@@ -11,19 +11,103 @@ Below we'll cover some basic topics to get started writing your own code to run 
 
 ## Table of Contents
 
-* [Reading and Running Examples](#reading-and-running-examples)
-  * [Blink](#blink)
-  * [Volume](#volume)
-  * [Ringmod](#ringmod)
 * [Compiling the Examples](#compiling-the-examples)
   * [Installing the Toolchain](#installing-the-toolchain)
   * [Cloning the SDK](#cloning-the-sdk)
   * [Building the Libraries](#building-the-libraries)
   * [Building the Examples](#building-the-examples)
+* [Reading and Running Examples](#reading-and-running-examples)
+  * [Blink](#blink)
+  * [Volume](#volume)
+  * [Ringmod](#ringmod)
 * [Going Further](#going-further)
   * [Copying and Modifying an Example](#copying-and-modifying-an-example)
   * [Creating Your Own Firmware Project](#creating-your-own-firmware-project)
   * [Sharing Firmware With the Community](#sharing-firmware-with-the-community)
+
+## Compiling the Examples
+
+Now that we've covered the basics of working with the Daisy in C++. We'll want to start making changes to the examples, and creating our own other-wordly effects.
+
+Overall, this process is pretty simple, regardless of what operating system you're using.
+
+### Installing the Toolchain
+
+The "toolchain" is a bundle of tools used to take the source code, and turn it into a binary file that can load onto the Aurora (or any other Daisy) hardware.
+
+If you've already done some development with Daisy in the past, you should already be good to go, and can skip ahead to the next section.
+
+On any operating system, our recommended text editor is VS Code, but you can work in any environment you're comfortable with. That said, we will only cover the specifics of working with VS Code in this guide.
+
+#### Windows
+
+<!-- **TODO**: add real link -->
+
+1. Download, and run the [Daisy Toolchain for Windows installer]() from Qu-bit website.
+2. Download, and run the [Git for Windows installer](https://git-scm.com/download/win).
+
+This installs the required tools to get up and running with daisy.
+
+There are some additional helper scripts that require python, but this is optional.
+
+On Windows, you can install python by downloading the latest from [python.org](https://www.python.org/downloads/).
+
+**Note**: The windows store version of python will not work.
+
+#### Mac OS
+
+<!-- **TODO**: add real link -->
+
+1. Download the [Daisy Toolchain for Mac OS installer]() from the Qu-Bit website.
+2. Unzip, and Double click, the `install.command` file contained within.
+
+There are some additional helper scripts that require python, but this is optional.
+
+Mac OS comes with python, but the latest version can be downloaded from [python.org](https://www.python.org/downloads/), or using homebrew.
+
+### Cloning the SDK
+
+The Aurora-SDK is a github repo, and it uses a few libraries to provide access to the hardware, and bundles the [DaisySP](https://github.com/electro-smith/DaisySP) DSP library.
+
+To download the entire SDK with all of its libraries:
+
+First, open a terminal, and navigate to the desired location on your computer. For our purposes here we'll use the `Desktop` folder, but you may wish to use `Documents`, `Developer`, or some other folder of your choice.
+
+Now, paste the following command into the terminal and press enter:
+
+```shell
+git clone https://github.com/qu-bit-electronix/Aurora-SDK --recurse-submodules
+```
+
+Once its done you'll have an Aurora-SDK full of everything you need to start writing your own code.
+
+### Building the Libraries
+
+The Aurora-SDK uses a few libraries to interface with the hardware, and provide a bunch of DSP that can be used within your projects. These need to be compiled before we can build any examples.
+
+The only time, other than after cloning the repo, that this needs to happen is when updating the libraries to a newer version.
+
+If you're using VS Code you can open the task menu by clicking: `Terminal->Run Task...` and selecting "Build Libraries" from the menu.
+
+This is the equivalent of running the following command in a terminal from the Aurora-SDK:
+
+```shell
+./ci/build_libs.sh
+```
+
+### Building the Examples
+
+Each example is a single C++ file, and a `Makefile`.
+
+If you're using VS Code, you can build all examples by running the build task by clicking: `Terminal->Run Build Task...`. The shortcut for this is `CTRL+SHIFT+B` on Windows, or `CMD+SHIFT+B` on Mac OS.
+
+Alternatively, using the same task menu as above, you can build individual examples. For example, the task, `Build Example - Blink` will build the Blink example.
+
+This is the equivalent of running the following command in a terminal from the specific Example's folder:
+
+```shell
+make
+```
 
 ## Reading and Running Examples
 
@@ -213,90 +297,6 @@ for (size_t i = 0; i < size; i++) {
 To do the actual ring modulation effect, we'll multiply that signal by our input signal.
 
 Check out the [full example code here](https://github.com/Qu-Bit-Electronix/Aurora-SDK/blob/main/Examples/Ringmod/Ringmod.cpp)
-
-## Compiling the Examples
-
-Now that we've covered the basics of working with the Daisy in C++. We'll want to start making changes to the examples, and creating our own other-wordly effects.
-
-Overall, this process is pretty simple, regardless of what operating system you're using.
-
-### Installing the Toolchain
-
-The "toolchain" is a bundle of tools used to take the source code, and turn it into a binary file that can load onto the Aurora (or any other Daisy) hardware.
-
-If you've already done some development with Daisy in the past, you should already be good to go, and can skip ahead to the next section.
-
-On any operating system, our recommended text editor is VS Code, but you can work in any environment you're comfortable with. That said, we will only cover the specifics of working with VS Code in this guide.
-
-#### Windows
-
-<!-- **TODO**: add real link -->
-
-1. Download, and run the [Daisy Toolchain for Windows installer]() from Qu-bit website.
-2. Download, and run the [Git for Windows installer](https://git-scm.com/download/win).
-
-This installs the required tools to get up and running with daisy.
-
-There are some additional helper scripts that require python, but this is optional.
-
-On Windows, you can install python by downloading the latest from [python.org](https://www.python.org/downloads/).
-
-**Note**: The windows store version of python will not work.
-
-#### Mac OS
-
-<!-- **TODO**: add real link -->
-
-1. Download the [Daisy Toolchain for Mac OS installer]() from the Qu-Bit website.
-2. Unzip, and Double click, the `install.command` file contained within.
-
-There are some additional helper scripts that require python, but this is optional.
-
-Mac OS comes with python, but the latest version can be downloaded from [python.org](https://www.python.org/downloads/), or using homebrew.
-
-### Cloning the SDK
-
-The Aurora-SDK is a github repo, and it uses a few libraries to provide access to the hardware, and bundles the [DaisySP](https://github.com/electro-smith/DaisySP) DSP library.
-
-To download the entire SDK with all of its libraries:
-
-First, open a terminal, and navigate to the desired location on your computer. For our purposes here we'll use the `Desktop` folder, but you may wish to use `Documents`, `Developer`, or some other folder of your choice.
-
-Now, paste the following command into the terminal and press enter:
-
-```shell
-git clone https://github.com/qu-bit-electronix/Aurora-SDK --recurse-submodules
-```
-
-Once its done you'll have an Aurora-SDK full of everything you need to start writing your own code.
-
-### Building the Libraries
-
-The Aurora-SDK uses a few libraries to interface with the hardware, and provide a bunch of DSP that can be used within your projects. These need to be compiled before we can build any examples.
-
-The only time, other than after cloning the repo, that this needs to happen is when updating the libraries to a newer version.
-
-If you're using VS Code you can open the task menu by clicking: `Terminal->Run Task...` and selecting "Build Libraries" from the menu.
-
-This is the equivalent of running the following command in a terminal from the Aurora-SDK:
-
-```shell
-./ci/build_libs.sh
-```
-
-### Building the Examples
-
-Each example is a single C++ file, and a `Makefile`.
-
-If you're using VS Code, you can build all examples by running the build task by clicking: `Terminal->Run Build Task...`. The shortcut for this is `CTRL+SHIFT+B` on Windows, or `CMD+SHIFT+B` on Mac OS.
-
-Alternatively, using the same task menu as above, you can build individual examples. For example, the task, `Build Example - Blink` will build the Blink example.
-
-This is the equivalent of running the following command in a terminal from the specific Example's folder:
-
-```shell
-make
-```
 
 ## Going Further
 
