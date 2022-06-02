@@ -163,6 +163,8 @@ In more complex projects we'll want to avoid using delays, but we'll get into te
 
 ### Volume
 
+<img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="4.2" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d0123cf8-7f65-451a-8c5e-2cd62bc653ed/Mix_animation.gif?format=2500w">
+
 In this example, we're going to add two new things to what our previous example did: audio, and knobs!
 
 That's right, the most exciting eurorack concept ever invented -- a volume control.
