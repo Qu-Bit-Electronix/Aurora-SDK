@@ -254,6 +254,8 @@ And check out the [full example code here](https://github.com/Qu-Bit-Electronix/
 
 ### Ringmod
 
+<img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="4.2" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/7900e6c4-20ad-4601-b5b7-923a668bec59/ringmod_animation.gif?format=2500w">
+
 In this example, we're going to take what we learned in the Volume example, and make something a bit more exciting happen.
 
 A ring modulator is a form of bipolar amplitude modulation that can be easily made by multiplying one signal (like our input signal), and another signal.
