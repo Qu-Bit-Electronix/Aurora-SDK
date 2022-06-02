@@ -67,6 +67,8 @@ Mac OS comes with python, but the latest version can be downloaded from [python.
 
 ### Cloning the SDK
 
+<img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="3.8" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/094d6fbb-7976-4a3f-b263-a645c25399d1/cloning_repo_meme.png?format=2500w">
+
 The Aurora-SDK is a github repo, and it uses a few libraries to provide access to the hardware, and bundles the [DaisySP](https://github.com/electro-smith/DaisySP) DSP library.
 
 To download the entire SDK with all of its libraries:
