@@ -43,7 +43,7 @@ The most up to date, official Aurora firmware can always be downloaded from [the
 
 ### Blink
 
-<img class="thumb-image loaded" data-src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d758eb86-6082-4621-96ec-529ee3bbbd37/Aurora_illustrated_blink.gif" data-image="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d758eb86-6082-4621-96ec-529ee3bbbd37/Aurora_illustrated_blink.gif" data-image-dimensions="1720x1102" data-image-focal-point="0.5,0.5" alt="" data-load="false" data-image-id="629816bb28bf05701677197c" data-type="image" style="left: 0%; top: 0%; width: 50%; height: auto; position: top;" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d758eb86-6082-4621-96ec-529ee3bbbd37/Aurora_illustrated_blink.gif?format=2500w" id="yui_3_17_2_1_1654180231715_559">
+<img class="thumb-image loaded" data-src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d758eb86-6082-4621-96ec-529ee3bbbd37/Aurora_illustrated_blink.gif" data-image="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d758eb86-6082-4621-96ec-529ee3bbbd37/Aurora_illustrated_blink.gif" data-image-dimensions="1720x1102" data-image-focal-point="0.5,0.5" alt="" data-load="false" data-image-id="629816bb28bf05701677197c" data-type="image" width=50%; height=auto; style="left: 0%; top: 0%; width: 50%; height: auto; position: top;" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d758eb86-6082-4621-96ec-529ee3bbbd37/Aurora_illustrated_blink.gif?format=2500w" id="yui_3_17_2_1_1654180231715_559">
 
 In this example, we're just periodically changing the state of an LED. No audio, no controls.
 
