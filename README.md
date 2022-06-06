@@ -9,7 +9,7 @@ Check out the [reference documentation](Qu-Bit-Electronix.github.io/Aurora-SDK) 
 
 Below we'll cover some basic topics to get started writing your own code to run on the Aurora
 
-## Table of Contents
+# Table of Contents
 
 * [Compiling the Examples](#compiling-the-examples)
   * [Installing the Toolchain](#installing-the-toolchain)
@@ -25,13 +25,13 @@ Below we'll cover some basic topics to get started writing your own code to run 
   * [Creating Your Own Firmware Project](#creating-your-own-firmware-project)
   * [Sharing Firmware With the Community](#sharing-firmware-with-the-community)
 
-## Compiling the Examples
+# Compiling the Examples
 
 To begin, let's get the development environment set up to start working with your Aurora!
 
 Overall, this process is pretty simple, regardless of what operating system you're using.
 
-### Installing the Toolchain
+## Installing the Toolchain
 
 The "toolchain" is a bundle of tools used to take the source code, and turn it into a binary file that can load onto the Aurora (or any other Daisy) hardware.
 
@@ -39,7 +39,7 @@ If you've already done some development with Daisy in the past, you should alrea
 
 On any operating system, our recommended text editor is VS Code, but you can work in any environment you're comfortable with. That said, we will only cover the specifics of working with VS Code in this guide.
 
-#### Windows
+### Windows
 
 <!-- **TODO**: add real link -->
 
@@ -54,7 +54,7 @@ On Windows, you can install python by downloading the latest from [python.org](h
 
 **Note**: The windows store version of python will not work.
 
-#### Mac OS
+### Mac OS
 
 <!-- **TODO**: add real link -->
 
@@ -65,7 +65,7 @@ There are some additional helper scripts that require python, but this is option
 
 Mac OS comes with python, but the latest version can be downloaded from [python.org](https://www.python.org/downloads/), or using homebrew.
 
-### Cloning the SDK
+## Cloning the SDK
 
 <img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="3.8" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d4426128-bfe8-45b6-9876-128c43f342d6/cloning_repo_meme.png?format=2500w">
 
@@ -83,7 +83,7 @@ git clone https://github.com/qu-bit-electronix/Aurora-SDK --recurse-submodules
 
 Once its done you'll have an Aurora-SDK full of everything you need to start writing your own code.
 
-### Building the Libraries
+## Building the Libraries
 
 The Aurora-SDK uses a few libraries to interface with the hardware, and provide a bunch of DSP that can be used within your projects. These need to be compiled before we can build any examples.
 
@@ -97,7 +97,7 @@ This is the equivalent of running the following command in a terminal from the A
 ./ci/build_libs.sh
 ```
 
-### Building the Examples
+## Building the Examples
 
 <img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="4.3" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/2027f19b-a2e5-406e-8df5-419ab42b116e/Build_animation_2.gif?format=2500w">
 
@@ -113,7 +113,7 @@ This is the equivalent of running the following command in a terminal from the s
 make
 ```
 
-## Reading and Running Examples
+# Reading and Running Examples
 
 One of the best ways to see how stuff works is to try it out!
 
@@ -129,7 +129,7 @@ To load one of the examples just drag the .bin file of your choice onto your USB
 
 The most up to date, official Aurora firmware can always be downloaded from [the Aurora product page](https://www.qubitelectronix.com/shop/aurora)
 
-### Blink
+## Blink
 
 <img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="3.1" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/678ab0ed-cab7-44c1-a089-19c64ab68231/Aurora_illustrated_LED.gif?format=2500w">
 
@@ -165,7 +165,7 @@ Check out the [full example code here](https://github.com/Qu-Bit-Electronix/Auro
 
 In more complex projects we'll want to avoid using delays, but we'll get into techniques for doing that later.
 
-### Volume
+## Volume
 
 <img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="4.2" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d0123cf8-7f65-451a-8c5e-2cd62bc653ed/Mix_animation.gif?format=2500w">
 
@@ -256,7 +256,7 @@ For a bit more detail on how audio works on the Daisy, check out the [Getting St
 And check out the [full example code here](https://github.com/Qu-Bit-Electronix/Aurora-SDK/blob/main/Examples/Volume/Volume.cpp)
 
 
-### Ringmod
+## Ringmod
 
 <img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="4.2" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/7900e6c4-20ad-4601-b5b7-923a668bec59/ringmod_animation.gif?format=2500w">
 
@@ -306,11 +306,11 @@ To do the actual ring modulation effect, we'll multiply that signal by our input
 
 Check out the [full example code here](https://github.com/Qu-Bit-Electronix/Aurora-SDK/blob/main/Examples/Ringmod/Ringmod.cpp)
 
-## Going Further
+# Going Further
 
 Now that we can compile the provided examples, let's look at where we might want to go from here.
 
-### Copying and Modifying an Example
+## Copying and Modifying an Example
 
 A great starting point is to copy one of the existing examples, and making modifications.
 
@@ -325,7 +325,7 @@ In the `Makefile` you'll want to:
 
 To build your new file you'll either need to edit the `.vscode/tasks.json` file (copying the entry for "Build Example - X" to your new folder name), or to run the `make` command directly from the terminal
 
-### Creating Your Own Firmware Project
+## Creating Your Own Firmware Project
 
 Once you've dabbled a bit, and want to make your own custom firmware for yourself (or to share with the community), you can set some stuff up to start making your own folders.
 
@@ -347,7 +347,7 @@ and initialize it with:
 git submodule update --init
 ```
 
-### Sharing Firmware With the Community
+## Sharing Firmware With the Community
 
 <!-- TODO Copy here kinda sucks -->
 
