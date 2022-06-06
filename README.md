@@ -99,6 +99,8 @@ This is the equivalent of running the following command in a terminal from the A
 
 ### Building the Examples
 
+<img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="4.3" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/1c5f1c10-3b86-44a1-a511-7e245e4e0d89/Build_animation_1.gif?format=2500w">
+
 Each example is a single C++ file, and a `Makefile`.
 
 If you're using VS Code, you can build all examples by running the build task by clicking: `Terminal->Run Build Task...`. The shortcut for this is `CTRL+SHIFT+B` on Windows, or `CMD+SHIFT+B` on Mac OS.
