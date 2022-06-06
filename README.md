@@ -357,4 +357,4 @@ The [Qu-Bit Forum](forum.qubitelectronix.com) is a great place to share your pro
 
 Another great place to share your project is on [patchstorage](patchstorage.com).
 
-[Click me](http://www.google.com){: .btn}
+<button name="button">Click me</button>
