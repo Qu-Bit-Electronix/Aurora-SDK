@@ -27,7 +27,7 @@ Below we'll cover some basic topics to get started writing your own code to run 
 
 ## Compiling the Examples
 
-Now that we've covered the basics of working with the Daisy in C++. We'll want to start making changes to the examples, and creating our own other-wordly effects.
+To begin, let's get the development environment set up to start working with your Aurora!
 
 Overall, this process is pretty simple, regardless of what operating system you're using.
 
