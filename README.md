@@ -357,4 +357,4 @@ The [Qu-Bit Forum](forum.qubitelectronix.com) is a great place to share your pro
 
 Another great place to share your project is on [patchstorage](patchstorage.com).
 
-[<img src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/98f5d1fd-2c74-4353-bd2e-fce2d106bd0c/Forum_button.png?format=2500w">](https://forum.qubitelectronix.com)
+[<img src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/72977abd-c113-43b1-b3aa-c09da288ce41/Forum_button.png?format=2500w">](https://forum.qubitelectronix.com)
