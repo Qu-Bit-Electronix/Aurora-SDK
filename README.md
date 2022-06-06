@@ -356,3 +356,5 @@ Once you've got something cool you may want to share the binary, and/or the sour
 The [Qu-Bit Forum](forum.qubitelectronix.com) is a great place to share your project along with any details about how it works.
 
 Another great place to share your project is on [patchstorage](patchstorage.com).
+
+<button name="button" onclick="http://www.google.com">Click me</button>
