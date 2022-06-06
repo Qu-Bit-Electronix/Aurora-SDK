@@ -357,4 +357,4 @@ The [Qu-Bit Forum](forum.qubitelectronix.com) is a great place to share your pro
 
 Another great place to share your project is on [patchstorage](patchstorage.com).
 
-<button name="button">Click me</button>
+<img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="4.3" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/98f5d1fd-2c74-4353-bd2e-fce2d106bd0c/Forum_button.png?format=2500w">
