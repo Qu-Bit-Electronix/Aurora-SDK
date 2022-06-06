@@ -99,7 +99,7 @@ This is the equivalent of running the following command in a terminal from the A
 
 ## Building the Examples
 
-<img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="4.3" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/2027f19b-a2e5-406e-8df5-419ab42b116e/Build_animation_2.gif?format=2500w">
+<img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="4.3" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/b7cec85d-75ef-4d93-befb-178e8cb81070/Build_animation_3.gif?format=2500w">
 
 Each example is a single C++ file, and a `Makefile`.
 
