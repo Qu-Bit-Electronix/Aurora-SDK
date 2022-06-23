@@ -1,0 +1,122 @@
+\hypertarget{aurora_8h}{}\doxysection{include/aurora.h File Reference}
+\label{aurora_8h}\index{include/aurora.h@{include/aurora.h}}
+{\ttfamily \#include \char`\"{}daisy\+\_\+seed.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fatfs.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaurora_1_1_calibration_data}{aurora\+::\+Calibration\+Data}}
+\begin{DoxyCompactList}\small\item\em Calibration data container for Aurora This data is calibrated from the Qu-\/\+Bit default Aurora firmware. It is advised not to save over this data unless you are prepared to recalibrate. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classaurora_1_1_hardware}{aurora\+::\+Hardware}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classaurora_1_1_hardware}{Hardware}} support class for the Qu-\/\+Bit Aurora This should be created, and intitialized at the beginning of any program before running anything else. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaceaurora}{aurora}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{aurora_8h_a81d8cf26855a2db797ba578f9122a0c7}{AURORA\+\_\+\+HW\+\_\+H}}
+\item 
+\#define \mbox{\hyperlink{aurora_8h_ab386e5094ddd369fd829615a5b66b255}{DTCMRAM}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.dtcmram\+\_\+bss\char`\"{})))
+\item 
+\#define \mbox{\hyperlink{aurora_8h_aa5fae9170a25fff902e7bfb80fbd5396}{D2\+RAM}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.d2\+\_\+bss\char`\"{})))
+\item 
+\#define \mbox{\hyperlink{aurora_8h_ae7fffc63aba0fc6215a853d09327e889}{D2\+RAM2}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.d2r2\+\_\+bss\char`\"{})))
+\item 
+\#define \mbox{\hyperlink{aurora_8h_aa0b721ed790d0341879520f3f589a90f}{ITCMRAM}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.itcmram\+\_\+bss\char`\"{})))
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbceca}{aurora\+::\+Control\+Knobs}} \{ \newline
+\mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa7355bc47484ac9009e9ae5ea4519711c}{aurora\+::\+KNOB\+\_\+\+TIME}}
+, \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa5e99ba973f08c9c45bc352aaa8d9315b}{aurora\+::\+KNOB\+\_\+\+REFLECT}}
+, \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa4030ec072fbbcc5198927f787fc381ae}{aurora\+::\+KNOB\+\_\+\+MIX}}
+, \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa26e02f7c718ee0ba934d0fc005355179}{aurora\+::\+KNOB\+\_\+\+ATMOSPHERE}}
+, \newline
+\mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa309901733cbf3f6fd847f847b88ff47d}{aurora\+::\+KNOB\+\_\+\+BLUR}}
+, \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa132e93ba27b993bd7bc17d340be96928}{aurora\+::\+KNOB\+\_\+\+WARP}}
+, \mbox{\hyperlink{namespaceaurora_afd0b5d0be3c1f756f0396bd2b2cbcecaa3fb7dc106c0f263d2f7843c3d85519e3}{aurora\+::\+KNOB\+\_\+\+LAST}}
+ \}
+\begin{DoxyCompactList}\small\item\em indexed accessors for knob controls Example usage\+: float val = hw.\+Get\+Knob\+Value(\+KNOB\+\_\+\+TIME); \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06b}{aurora\+::\+Control\+CVs}} \{ \newline
+\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba14a9a281ea2e5fb0f4643ea71ac8f4fc}{aurora\+::\+CV\+\_\+\+ATMOSPHERE}}
+, \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba99ad46bf89ab0808918343824a12003d}{aurora\+::\+CV\+\_\+\+TIME}}
+, \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba20130ae1b93454a79fc03aeebe1c3459}{aurora\+::\+CV\+\_\+\+MIX}}
+, \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba53094bc7122e2e060a025919c0b4c006}{aurora\+::\+CV\+\_\+\+REFLECT}}
+, \newline
+\mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba38a54728d2de8f46f2a0ec1e9b93d922}{aurora\+::\+CV\+\_\+\+BLUR}}
+, \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba53812239f728e42ebeffcdcb9c076345}{aurora\+::\+CV\+\_\+\+WARP}}
+, \mbox{\hyperlink{namespaceaurora_aabe0e7004691ac0c9e1e3a93c5a8d06ba4a428b2569bd47fa6a9595eaee2b2560}{aurora\+::\+CV\+\_\+\+LAST}}
+ \}
+\begin{DoxyCompactList}\small\item\em indexed accessors for CV controls Example usage\+: float val = hw.\+Get\+Cv\+Value(\+CV\+\_\+\+ATMOSPHERE); \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921}{aurora\+::\+Switches}} \{ \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a725a2822002e2209fc0916f2173d3271}{aurora\+::\+SW\+\_\+\+FREEZE}}
+, \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a45ae311227c962283f6c55b0b865b8c2}{aurora\+::\+SW\+\_\+\+REVERSE}}
+, \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a6544313cfea960b855983f2c347ea96a}{aurora\+::\+SW\+\_\+\+SHIFT}}
+, \mbox{\hyperlink{namespaceaurora_ab239f6a72e39cc8d953568ce3d672921a77fb243b24a94ebedcf2251056027b64}{aurora\+::\+SW\+\_\+\+LAST}}
+ \}
+\begin{DoxyCompactList}\small\item\em indexed accessors for momentary switches Example usage\+: bool state = hw.\+Get\+Switch(\+SW\+\_\+\+FREEZE).Pressed(); \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3e}{aurora\+::\+Gates}} \{ \mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3eaa74bc67b4d25cfae7d624cc022afda9e}{aurora\+::\+GATE\+\_\+\+FREEZE}}
+, \mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3ea57f639eba139528e9d5976c480688885}{aurora\+::\+GATE\+\_\+\+REVERSE}}
+, \mbox{\hyperlink{namespaceaurora_ae5a447392ac449b05dd557f31d02fd3ea8a43310078f25453bf3286dfcac4a2f5}{aurora\+::\+GATE\+\_\+\+LAST}}
+ \}
+\begin{DoxyCompactList}\small\item\em indexed accessors for momentary switches Example usage\+: bool trig = hw.\+Get\+Gate\+Trig(\+GATE\+\_\+\+FREEZE); \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1e}{aurora\+::\+Leds}} \{ \newline
+\mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea86982932ab7fceff1b3ed9de87f9a76d}{aurora\+::\+LED\+\_\+\+REVERSE}}
+, \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eae68413e53d500917bb75e2cae59f3730}{aurora\+::\+LED\+\_\+\+FREEZE}}
+, \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea65e83be6acc64c896bb19b9935b2609f}{aurora\+::\+LED\+\_\+1}}
+, \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaab18baf373916582c323adb76225530c}{aurora\+::\+LED\+\_\+2}}
+, \newline
+\mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaec6469783dfe550322a1607be048efa5}{aurora\+::\+LED\+\_\+3}}
+, \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eae9295b936e7a9fb1d1dde59c33fc984b}{aurora\+::\+LED\+\_\+4}}
+, \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea2796848b297e45ac06f7e044aeb5a72a}{aurora\+::\+LED\+\_\+5}}
+, \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea8d53466cd8e0ca6e26db667a712b3355}{aurora\+::\+LED\+\_\+6}}
+, \newline
+\mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaa0f415470c1fdebdfec36875368a4344}{aurora\+::\+LED\+\_\+\+BOT\+\_\+1}}
+, \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea3828db9a1a9a0af93a0c2c5115698096}{aurora\+::\+LED\+\_\+\+BOT\+\_\+2}}
+, \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1ea8624f9c01b04230b5b2c17453bd52068}{aurora\+::\+LED\+\_\+\+BOT\+\_\+3}}
+, \mbox{\hyperlink{namespaceaurora_a9a9c6ab298a74678c30dc9d3947d8e1eaa843f019f3d74106e40f62494ddf0c65}{aurora\+::\+LED\+\_\+\+LAST}}
+ \}
+\begin{DoxyCompactList}\small\item\em indexed accessors for RGB LEDs Example usage\+: hw.\+Set\+Led(LED\+\_\+\+FREEZE, 0.\+f, 0.\+f, 1.\+f); \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+daisy\+::\+USBHost\+Handle \mbox{\hyperlink{namespaceaurora_add63f29f2efd87c1754e7add264350e8}{aurora\+::usb}}
+\begin{DoxyCompactList}\small\item\em global USB host handle accessor This is left global so that it is guaranteed to be within the AXI SRAM with the aurora\+\_\+sram.\+lds linker file. \end{DoxyCompactList}\item 
+daisy\+::\+Fat\+FSInterface \mbox{\hyperlink{namespaceaurora_a300b1377a387f60ff447c08d7a747877}{aurora\+::fatfs\+\_\+interface}}
+\begin{DoxyCompactList}\small\item\em global accessor to the Fat\+FS interface. This is left global so that it is guaranteed to be within the AXI SRAM with the aurora\+\_\+sram.\+lds linker file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{aurora_8h_a81d8cf26855a2db797ba578f9122a0c7}\label{aurora_8h_a81d8cf26855a2db797ba578f9122a0c7}} 
+\index{aurora.h@{aurora.h}!AURORA\_HW\_H@{AURORA\_HW\_H}}
+\index{AURORA\_HW\_H@{AURORA\_HW\_H}!aurora.h@{aurora.h}}
+\doxysubsubsection{\texorpdfstring{AURORA\_HW\_H}{AURORA\_HW\_H}}
+{\footnotesize\ttfamily \#define AURORA\+\_\+\+HW\+\_\+H}
+
+Aurora Hardware Support File \mbox{\Hypertarget{aurora_8h_aa5fae9170a25fff902e7bfb80fbd5396}\label{aurora_8h_aa5fae9170a25fff902e7bfb80fbd5396}} 
+\index{aurora.h@{aurora.h}!D2RAM@{D2RAM}}
+\index{D2RAM@{D2RAM}!aurora.h@{aurora.h}}
+\doxysubsubsection{\texorpdfstring{D2RAM}{D2RAM}}
+{\footnotesize\ttfamily \#define D2\+RAM~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.d2\+\_\+bss\char`\"{})))}
+
+\mbox{\Hypertarget{aurora_8h_ae7fffc63aba0fc6215a853d09327e889}\label{aurora_8h_ae7fffc63aba0fc6215a853d09327e889}} 
+\index{aurora.h@{aurora.h}!D2RAM2@{D2RAM2}}
+\index{D2RAM2@{D2RAM2}!aurora.h@{aurora.h}}
+\doxysubsubsection{\texorpdfstring{D2RAM2}{D2RAM2}}
+{\footnotesize\ttfamily \#define D2\+RAM2~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.d2r2\+\_\+bss\char`\"{})))}
+
+\mbox{\Hypertarget{aurora_8h_ab386e5094ddd369fd829615a5b66b255}\label{aurora_8h_ab386e5094ddd369fd829615a5b66b255}} 
+\index{aurora.h@{aurora.h}!DTCMRAM@{DTCMRAM}}
+\index{DTCMRAM@{DTCMRAM}!aurora.h@{aurora.h}}
+\doxysubsubsection{\texorpdfstring{DTCMRAM}{DTCMRAM}}
+{\footnotesize\ttfamily \#define DTCMRAM~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.dtcmram\+\_\+bss\char`\"{})))}
+
+\mbox{\Hypertarget{aurora_8h_aa0b721ed790d0341879520f3f589a90f}\label{aurora_8h_aa0b721ed790d0341879520f3f589a90f}} 
+\index{aurora.h@{aurora.h}!ITCMRAM@{ITCMRAM}}
+\index{ITCMRAM@{ITCMRAM}!aurora.h@{aurora.h}}
+\doxysubsubsection{\texorpdfstring{ITCMRAM}{ITCMRAM}}
+{\footnotesize\ttfamily \#define ITCMRAM~\+\_\+\+\_\+attribute\+\_\+\+\_\+((section(\char`\"{}.itcmram\+\_\+bss\char`\"{})))}
+
