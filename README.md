@@ -61,6 +61,18 @@ There are some additional helper scripts that require python, but this is option
 
 Mac OS comes with python, but the latest version can be downloaded from [python.org](https://www.python.org/downloads/), or using homebrew.
 
+If during the steps below, you run into an error similar to the following:
+
+```
+xcrun: error: invalid active developer path
+```
+
+then you need to run the following to update, or install the xcode developer tools:
+
+```
+xcode-select --install
+```
+
 ## Cloning the SDK
 
 <img data-image-focal-point="0.5,0.5" style="width: 100%; height: 100%; object-position: 50% 50%; object-fit: cover; cursor: auto;" data-parent-ratio="3.8" class="" data-image-resolution="2500w" src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/d4426128-bfe8-45b6-9876-128c43f342d6/cloning_repo_meme.png?format=2500w">
