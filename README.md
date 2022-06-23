@@ -41,9 +41,7 @@ On any operating system, our recommended text editor is VS Code, but you can wor
 
 ### Windows
 
-<!-- **TODO**: add real link -->
-
-1. Download, and run the [Daisy Toolchain for Windows installer]() from Qu-bit website.
+1. Download, and run the [Daisy Toolchain for Windows installer](https://media-obsy-dev.fra1.digitaloceanspaces.com/installers/DaisyToolchain-1.0.0-win64.exe) from Qu-bit website.
 2. Download, and run the [Git for Windows installer](https://git-scm.com/download/win).
 
 This installs the required tools to get up and running with daisy.
@@ -56,9 +54,7 @@ On Windows, you can install python by downloading the latest from [python.org](h
 
 ### Mac OS
 
-<!-- **TODO**: add real link -->
-
-1. Download the [Daisy Toolchain for Mac OS installer]() from the Qu-Bit website.
+1. Download the [Daisy Toolchain for Mac OS installer](https://media-obsy-dev.fra1.digitaloceanspaces.com/installers/DaisyToolchain-macos-installer-x64-0.1.2.pkg) from the Qu-Bit website.
 2. Unzip, and Double click, the `install.command` file contained within.
 
 There are some additional helper scripts that require python, but this is optional.
@@ -124,8 +120,6 @@ Before we get into installing any tools or anything, let's take a moment to look
 To load one of the examples just drag the .bin file of your choice onto your USB drive, and power up the Aurora with it inserted.
 
 **Note**: In order to ensure that you're loading the desired program, you should have only one `.bin` file in the root directory of the USB drive. (you can keep as many as you want in folders, though!)
-
-<!-- **TODO**: ADD AN ACTUAL PLACE FOR THIS!! -->
 
 The most up to date, official Aurora firmware can always be downloaded from [the Aurora product page](https://www.qubitelectronix.com/shop/aurora)
 
@@ -348,8 +342,6 @@ git submodule update --init
 ```
 
 ## Sharing Firmware With the Community
-
-<!-- TODO Copy here kinda sucks -->
 
 Once you've got something cool you may want to share the binary, and/or the source code with the community!
 
