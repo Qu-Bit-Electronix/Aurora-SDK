@@ -7,6 +7,8 @@ on:
     - 'include/*'
     - 'docs/*'
     - './README.md'
+  workflow_dispatch:
+
 jobs:
   # creates a dist/documentation/* folder containing the html documentation
   deploy-local: 
@@ -26,9 +28,8 @@ jobs:
         add: dist/documentation
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    # TODO uncomment when public, with gh-page setup.
-    # - name: deploy web
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: ./dist/documentation/html
+    - name: deploy web
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist/documentation/html
