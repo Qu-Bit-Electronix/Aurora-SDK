@@ -361,4 +361,4 @@ The [Qu-Bit Discord](https://discord.gg/BZmuBxcE) is a great place to share your
 
 Another great place to share your project is on [patchstorage](patchstorage.com).
 
-[<img src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/72977abd-c113-43b1-b3aa-c09da288ce41/Forum_button.png?format=2500w">](https://forum.qubitelectronix.com)
+[<img src="https://images.squarespace-cdn.com/content/v1/56feccc7a3360c08ffa34ed4/9f32a6a7-1436-44d0-abf3-5406426a8bd4/QB_discord_banner.png?format=2500w">](https://discord.gg/BZmuBxcE)
