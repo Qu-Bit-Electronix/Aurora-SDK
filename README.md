@@ -357,7 +357,7 @@ git submodule update --init
 
 Once you've got something cool you may want to share the binary, and/or the source code with the community!
 
-The [Qu-Bit Forum](forum.qubitelectronix.com) is a great place to share your project along with any details about how it works.
+The [Qu-Bit Discord](https://discord.gg/BZmuBxcE) is a great place to share your project along with any details about how it works.
 
 Another great place to share your project is on [patchstorage](patchstorage.com).
 
