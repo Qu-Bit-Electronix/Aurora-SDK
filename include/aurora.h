@@ -187,12 +187,12 @@ class Hardware
         SetAudioBlockSize(96);
         UpdateHidRates();
 
-        LoadCalibrationData();
         cal_save_flag_ = false;
         for(int i = 0; i < CV_LAST; i++)
         {
             cv_offsets_[i] = 0.f;
         }
+        LoadCalibrationData();
     }
 
     /** @brief Starts a specified audio callback 
@@ -375,6 +375,15 @@ class Hardware
             led_driver_.SetLed(led.r, r);
         led_driver_.SetLed(led.g, g);
         led_driver_.SetLed(led.b, b);
+    }
+
+    /** @brief Sets the Color value of an LED
+     *  @param idx LED index (on of Leds enum above)
+     *  @param c Color object containing desired RGB values
+     */
+    void SetLed(Leds idx, daisy::Color c)
+    {
+        SetLed(idx, c.Red(), c.Green(), c.Blue());
     }
 
     /** @brief filters and debounces all control 
